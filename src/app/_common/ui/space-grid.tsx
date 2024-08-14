@@ -1,5 +1,5 @@
-import type { Space } from "~/app/_common/types/spaces";
-import { SpaceCard } from "./space-card";
+import { Space } from '../lib/declarations/decgov_backend.did'
+import { SpaceCard } from './space-card'
 
 export function SpacesGrid({ spaces }: { spaces: Space[] }) {
 	return (
@@ -8,5 +8,5 @@ export function SpacesGrid({ spaces }: { spaces: Space[] }) {
 				<SpaceCard key={space.id} space={space} />
 			))}
 		</div>
-	);
+	)
 }

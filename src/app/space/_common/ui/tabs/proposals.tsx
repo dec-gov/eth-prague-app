@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { Proposal } from "~/app/_common/types/proposals";
-import { Space } from "~/app/_common/types/spaces";
+import {
+	Proposal,
+	Space,
+} from "~/app/_common/lib/declarations/decgov_backend.did";
 import { Button } from "~/sushi-ui";
 import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
 

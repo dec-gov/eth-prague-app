@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Space } from "~/app/_common/types/spaces";
+import { Space } from "~/app/_common/lib/declarations/decgov_backend.did";
 import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
 
 interface SidebarProps<T extends Readonly<string[]>> {

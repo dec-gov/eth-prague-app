@@ -17,14 +17,17 @@ export default function SpacePage() {
 	const [isMounted, setIsMounted] = useState(false);
 
 	const params = useSearchParams();
+	const spaceId = params.get("spaceId")
+		? Number(params.get("spaceId"))
+		: undefined;
 
-	const { data: space, isInitialLoading: isSpaceLoading } = useSpace(
-		params.get("spaceId"),
-	);
+	const { data: space, isInitialLoading: isSpaceLoading } = useSpace({
+		spaceId,
+	});
 	const { data: proposals, isInitialLoading: isProposalsLoading } =
-		useProposalsBySpace(params.get("spaceId"));
+		useProposalsBySpace({ spaceId });
 	const { data: strategies, isInitialLoading: isStrategiesLoading } =
-		useStrategiesBySpace(params.get("spaceId"));
+		useStrategiesBySpace({ spaceId });
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {

@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Space } from "~/app/_common/types/spaces";
-import { Card, CardContent } from "~/sushi-ui/components/card";
+import Link from 'next/link'
+import { Card, CardContent } from '~/sushi-ui/components/card'
+import { Space } from '../lib/declarations/decgov_backend.did'
 
 export function SpaceCard({ space }: { space: Space }) {
 	return (
@@ -8,11 +8,16 @@ export function SpaceCard({ space }: { space: Space }) {
 			<Card className="select-none px-4">
 				<CardContent className="flex justify-center items-center pt-6">
 					<div>
-						<img width={96} height={96} src={space.iconLink} alt={space.name} />
+						<img
+							width={96}
+							height={96}
+							src={space.icon_link}
+							alt={space.name}
+						/>
 					</div>
 					<div className="text-xl font-semibold">{space.name}</div>
 				</CardContent>
 			</Card>
 		</Link>
-	);
+	)
 }

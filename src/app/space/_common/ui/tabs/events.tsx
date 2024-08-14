@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Space } from "~/app/_common/lib/declarations/decgov_backend.did";
 import { useEventsBySpace } from "~/app/_common/lib/hooks/use-events-by-space";
-import { type Event } from "~/app/_common/types/events";
-import { Space } from "~/app/_common/types/spaces";
+import { Event as EventType } from "~/app/_common/types/events";
 import { Button, Collapsible } from "~/sushi-ui";
 import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
 
-function Event({ event }: { event: Event }) {
+function Event({ event }: { event: EventType }) {
 	const [isExpanded, setIsExpanded] = useState(false);
 
 	return (
@@ -43,9 +43,11 @@ function Event({ event }: { event: Event }) {
 }
 
 export function Events({ space }: { space: Space }) {
-	const { data: events, isInitialLoading } = useEventsBySpace(space.id);
+	const { data: events, isLoading } = useEventsBySpace({
+		spaceId: space.id,
+	});
 
-	if (!events || isInitialLoading) return <div>Loading...</div>;
+	if (!events || isLoading) return <div>Loading...</div>;
 
 	return (
 		<div className="space-y-8">

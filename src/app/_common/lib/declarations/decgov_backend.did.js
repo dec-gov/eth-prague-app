@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export const idlFactory = ({ IDL }) => {
 	const ProposalOptionVote = IDL.Record({
 		id: IDL.Nat32,
@@ -7,7 +9,7 @@ export const idlFactory = ({ IDL }) => {
 		user_address: IDL.Text,
 		timestamp: IDL.Nat32,
 		voting_power: IDL.Nat64,
-	});
+	})
 	const ProposalOption = IDL.Record({
 		id: IDL.Nat32,
 		votes: IDL.Vec(ProposalOptionVote),
@@ -16,7 +18,7 @@ export const idlFactory = ({ IDL }) => {
 		proposal_id: IDL.Nat32,
 		on_win_bytecode: IDL.Text,
 		on_win_chain_id: IDL.Nat32,
-	});
+	})
 	const Proposal = IDL.Record({
 		id: IDL.Nat32,
 		title: IDL.Text,
@@ -25,7 +27,7 @@ export const idlFactory = ({ IDL }) => {
 		description: IDL.Text,
 		options: IDL.Vec(ProposalOption),
 		space_id: IDL.Nat32,
-	});
+	})
 	const Space = IDL.Record({
 		id: IDL.Nat32,
 		vote_delay: IDL.Nat32,
@@ -37,7 +39,7 @@ export const idlFactory = ({ IDL }) => {
 		min_vote_power: IDL.Nat64,
 		proposals: IDL.Vec(Proposal),
 		quorum: IDL.Nat32,
-	});
+	})
 	return IDL.Service({
 		delete_proposal: IDL.Func([IDL.Nat32, IDL.Nat32], [IDL.Opt(Proposal)], []),
 		delete_proposal_option: IDL.Func(
@@ -54,34 +56,34 @@ export const idlFactory = ({ IDL }) => {
 		get_proposal: IDL.Func(
 			[IDL.Nat32, IDL.Nat32],
 			[IDL.Opt(Proposal)],
-			["query"],
+			['query'],
 		),
 		get_proposal_option: IDL.Func(
 			[IDL.Nat32, IDL.Nat32, IDL.Nat32],
 			[IDL.Opt(ProposalOption)],
-			["query"],
+			['query'],
 		),
 		get_proposal_options: IDL.Func(
 			[IDL.Nat32, IDL.Nat32],
 			[IDL.Opt(IDL.Vec(ProposalOption))],
-			["query"],
+			['query'],
 		),
 		get_proposals: IDL.Func(
 			[IDL.Nat32],
 			[IDL.Opt(IDL.Vec(Proposal))],
-			["query"],
+			['query'],
 		),
-		get_space: IDL.Func([IDL.Nat32], [IDL.Opt(Space)], ["query"]),
-		get_spaces: IDL.Func([], [IDL.Opt(IDL.Vec(Space))], ["query"]),
+		get_space: IDL.Func([IDL.Nat32], [IDL.Opt(Space)], ['query']),
+		get_spaces: IDL.Func([], [IDL.Opt(IDL.Vec(Space))], ['query']),
 		get_vote: IDL.Func(
 			[IDL.Nat32, IDL.Nat32, IDL.Nat32, IDL.Nat32],
 			[IDL.Opt(ProposalOptionVote)],
-			["query"],
+			['query'],
 		),
 		get_votes: IDL.Func(
 			[IDL.Nat32, IDL.Nat32, IDL.Nat32],
 			[IDL.Opt(IDL.Vec(ProposalOptionVote))],
-			["query"],
+			['query'],
 		),
 		insert_proposal: IDL.Func(
 			[IDL.Nat32, IDL.Text, IDL.Text, IDL.Nat32, IDL.Nat32],
@@ -175,8 +177,8 @@ export const idlFactory = ({ IDL }) => {
 			[IDL.Opt(ProposalOptionVote)],
 			[],
 		),
-	});
-};
+	})
+}
 export const init = ({ IDL }) => {
-	return [];
-};
+	return []
+}
