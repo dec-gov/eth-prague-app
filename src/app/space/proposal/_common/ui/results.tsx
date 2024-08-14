@@ -1,7 +1,9 @@
 import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
-import { ProposalOptionVote } from "~/app/_common/types/votes";
-import { ProposalOption } from "~/app/_common/types/options";
 import { useMemo } from "react";
+import {
+	ProposalOption,
+	ProposalOptionVote,
+} from "~/app/_common/lib/declarations/decgov_backend.did";
 
 interface ResultsProps {
 	options: ProposalOption[];
@@ -10,15 +12,15 @@ interface ResultsProps {
 
 export function Results({ options, optionVotes }: ResultsProps) {
 	const totalPower = useMemo(
-		() => optionVotes.reduce((acc, vote) => acc + vote.power, 0n),
+		() => optionVotes.reduce((acc, vote) => acc + vote.voting_power, 0n),
 		[optionVotes],
 	);
 
 	const optionsWithVotes = useMemo(() => {
 		return options.map((option) => {
 			const optionPower = optionVotes.reduce((acc, vote) => {
-				if (vote.optionId === option.id) {
-					return acc + vote.power;
+				if (vote.option_id === option.id) {
+					return acc + vote.voting_power;
 				}
 				return acc;
 			}, 0n);

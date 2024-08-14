@@ -1,16 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
-import { Space, dummySpaces } from "~/app/_common/types/spaces";
+import { decgov_backend } from "../declarations";
 
-export function useSpace(_spaceId: number | string | null | undefined) {
-	const spaceId =
-		_spaceId !== null && _spaceId !== undefined ? Number(_spaceId) : null;
+interface UseSpace {
+	spaceId: number | undefined;
+}
 
-	return useQuery<Space>({
-		queryKey: ["space", spaceId],
+export function useSpace({ spaceId }: UseSpace) {
+	return useQuery({
+		queryKey: ["space", { spaceId }],
 		queryFn: async () => {
-			// const data = [] as unknown[]
-			// return spaceSchema.parse(data)
-			return dummySpaces[0] as Space;
+			if (typeof spaceId !== "number") {
+				throw new Error("Invalid spaceId");
+			}
+
+			const data = await decgov_backend.get_space(spaceId);
+
+			const space = data[0];
+
+			if (!space) {
+				throw new Error("Fetch space failed");
+			}
+
+			return space;
 		},
 		enabled: typeof spaceId === "number",
 	});

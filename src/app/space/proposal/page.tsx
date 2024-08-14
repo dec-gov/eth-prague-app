@@ -2,10 +2,10 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useOptionsByProposal } from "~/app/_common/lib/hooks/useOptionsByProposal";
-import { useProposal } from "~/app/_common/lib/hooks/useProposal";
-import { useSpace } from "~/app/_common/lib/hooks/useSpace";
-import { useVotesByProposal } from "~/app/_common/lib/hooks/useVotesByProposal";
+import { useOptionsByProposal } from "~/app/_common/lib/hooks/use-options-by-proposal";
+import { useProposal } from "~/app/_common/lib/hooks/use-proposal";
+import { useSpace } from "~/app/_common/lib/hooks/use-space";
+import { useVotesByProposal } from "~/app/_common/lib/hooks/use-votes-by-proposal";
 import { Body } from "./_common/ui/body";
 import { Information } from "./_common/ui/information";
 import { Results } from "./_common/ui/results";
@@ -16,25 +16,29 @@ export default function SpacePage() {
 	const [isMounted, setIsMounted] = useState(false);
 
 	const params = useSearchParams();
+	const spaceId = params.get("spaceId")
+		? Number(params.get("spaceId"))
+		: undefined;
+	const proposalId = params.get("proposalId")
+		? Number(params.get("proposalId"))
+		: undefined;
 
-	const { data: space, isInitialLoading: isSpaceLoading } = useSpace(
-		params.get("spaceId"),
-	);
+	const { data: space, isInitialLoading: isSpaceLoading } = useSpace({
+		spaceId,
+	});
 
-	const { data: proposal, isInitialLoading: isProposalLoading } = useProposal(
-		params.get("proposalId"),
-	);
+	const { data: proposal, isInitialLoading: isProposalLoading } = useProposal({
+		spaceId,
+		proposalId,
+	});
 
-	const {
-		data: votes,
-		isInitialLoading: isVotesLoading,
-		error,
-	} = useVotesByProposal(params.get("proposalId"));
-
-	console.log(votes, error);
+	const { data: votes, isLoading: isVotesLoading } = useVotesByProposal({
+		spaceId,
+		proposalId,
+	});
 
 	const { data: options, isInitialLoading: isOptionsLoading } =
-		useOptionsByProposal(params.get("proposalId"));
+		useOptionsByProposal({ spaceId, proposalId });
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {

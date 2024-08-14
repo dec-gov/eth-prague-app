@@ -1,8 +1,10 @@
-import { Proposal } from "~/app/_common/types/proposals";
 import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
 import formatDate from "date-fns/format";
-import { Space } from "~/app/_common/types/spaces";
 import formatDistance from "date-fns/formatDistance";
+import {
+	Proposal,
+	Space,
+} from "~/app/_common/lib/declarations/decgov_backend.did";
 
 interface InformationProps {
 	space: Space;
@@ -10,11 +12,11 @@ interface InformationProps {
 }
 
 export function Information({ space, proposal }: InformationProps) {
-	const createdAtDate = new Date(proposal.dateCreated * 1000);
+	const createdAtDate = new Date(proposal.date_created * 1000);
 	const createdAt = formatDate(createdAtDate, "HH:mm dd/MM/yyyy");
 
 	const endsAtDate = new Date(
-		(proposal.dateCreated + space.voteDuration) * 1000,
+		(proposal.date_created + space.vote_duration) * 1000,
 	);
 	const endsAt = formatDate(endsAtDate, "HH:mm dd/MM/yyyy");
 	const endsIn = formatDistance(endsAtDate, new Date(), { addSuffix: true });

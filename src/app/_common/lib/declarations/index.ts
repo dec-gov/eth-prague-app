@@ -13,11 +13,11 @@ import { _SERVICE } from "./decgov_backend.did";
 import { idlFactory } from "./decgov_backend.did.js";
 export { idlFactory } from "./decgov_backend.did.js";
 
-export const canisterId = process.env.NEXT_BACKEND_CANISTER_URL;
+export const canisterId = process.env.NEXT_PUBLIC_BACKEND_CANISTER_ID;
 
 if (!canisterId) {
 	throw new Error(
-		"Please provide the backend canister URL in the NEXT_BACKEND_CANISTER_URL environment variable",
+		"Please provide the backend canister URL in the NEXT_PUBLIC_BACKEND_CANISTER_ID environment variable",
 	);
 }
 
@@ -39,7 +39,6 @@ export declare interface CreateActorOptions {
 /**
  * Intializes an {@link ActorSubclass}, configured with the provided SERVICE interface of a canister.
  * @constructs {@link ActorSubClass}
- * @param {string | Principal} canisterId - ID of the canister the {@link Actor} will talk to
  * @param {CreateActorOptions} options - see {@link CreateActorOptions}
  * @param {CreateActorOptions["agent"]} options.agent - a pre-configured agent you'd like to use. Supercedes agentOptions
  * @param {CreateActorOptions["agentOptions"]} options.agentOptions - options to set up a new agent
@@ -76,4 +75,8 @@ export const createActor = (
 	});
 };
 
-export const decgov_backend: ActorSubclass<_SERVICE> = createActor();
+export const decgov_backend: ActorSubclass<_SERVICE> = createActor({
+	agentOptions: {
+		host: process.env.NEXT_PUBLIC_BACKEND_CANISTER_URL,
+	},
+});

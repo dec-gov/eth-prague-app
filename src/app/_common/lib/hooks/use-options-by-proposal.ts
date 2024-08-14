@@ -1,24 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-	ProposalOption,
-	dummyProposalOptions,
-} from "~/app/_common/types/options";
+import { decgov_backend } from "../declarations";
 
-export function useOptionsByProposal(
-	_proposalId: number | string | null | undefined,
-) {
-	const proposalId =
-		_proposalId !== null && _proposalId !== undefined
-			? Number(_proposalId)
-			: null;
+interface UseOptionsByProposal {
+	spaceId: number | undefined;
+	proposalId: number | undefined;
+}
 
-	return useQuery<ProposalOption[]>({
-		queryKey: ["options-by-proposal", proposalId],
+export function useOptionsByProposal({
+	spaceId,
+	proposalId,
+}: UseOptionsByProposal) {
+	return useQuery({
+		queryKey: ["options-by-proposal", { spaceId, proposalId }],
 		queryFn: async () => {
-			// const data = [] as unknown[]
-			// return z.array(optionSchema).parse(data)
-			return dummyProposalOptions;
+			if (typeof spaceId !== "number" || typeof proposalId !== "number") {
+				throw new Error("Invalid spaceId or proposalId");
+			}
+
+			const data = await decgov_backend.get_proposal_options(
+				spaceId,
+				proposalId,
+			);
+
+			const options = data[0];
+
+			if (!options) {
+				throw new Error("Fetch options by proposal failed");
+			}
+
+			return options;
 		},
-		enabled: typeof proposalId === "number",
+		enabled: typeof spaceId === "number" && typeof proposalId === "number",
 	});
 }

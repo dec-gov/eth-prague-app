@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import { Address } from "viem";
 
 interface UseVotingPower {
-	voter: string;
+	voter: Address | undefined;
 	spaceId: number;
 	blockNumber?: number | undefined;
 }
@@ -31,5 +32,6 @@ export function useVotingPower({
 			// return BigInt(res.votingPower)
 			return BigInt(0);
 		},
+		enabled: typeof voter === "string" && typeof spaceId === "number",
 	});
 }

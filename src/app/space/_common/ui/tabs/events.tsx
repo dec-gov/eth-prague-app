@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useEventsBySpace } from "~/app/_common/lib/hooks/useEventsBySpace";
+import { useEventsBySpace } from "~/app/_common/lib/hooks/use-events-by-space";
 import { type Event } from "~/app/_common/types/events";
 import { Space } from "~/app/_common/types/spaces";
 import { Button, Collapsible } from "~/sushi-ui";

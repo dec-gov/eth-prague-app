@@ -1,18 +1,19 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 
-import { Event, dummyEvents } from "~/app/_common/types/events"
+import { Event, dummyEvents } from "~/app/_common/types/events";
 
-export function useEventsBySpace(_spaceId: number | string | null | undefined) {
-  const spaceId =
-    _spaceId !== null && _spaceId !== undefined ? Number(_spaceId) : null
+interface UseEventsBySpace {
+	spaceId: number | undefined;
+}
 
-  return useQuery<Event[]>({
-    queryKey: ["events-by-space", spaceId],
-    queryFn: async () => {
-      // const data = [] as unknown[];
-      // return z.array(eventSchema).parse(data);
-      return dummyEvents
-    },
-    enabled: typeof spaceId === "number"
-  })
+export function useEventsBySpace({ spaceId }: UseEventsBySpace) {
+	return useQuery<Event[]>({
+		queryKey: ["events-by-space", { spaceId }],
+		queryFn: async () => {
+			// const data = [] as unknown[];
+			// return z.array(eventSchema).parse(data);
+			return dummyEvents;
+		},
+		enabled: typeof spaceId === "number",
+	});
 }

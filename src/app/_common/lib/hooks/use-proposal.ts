@@ -1,19 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
-import { Proposal, dummyProposals } from "~/app/_common/types/proposals";
+import { decgov_backend } from "../declarations";
 
-export function useProposal(_proposalId: number | string | null | undefined) {
-	const proposalId =
-		_proposalId !== null && _proposalId !== undefined
-			? Number(_proposalId)
-			: null;
+interface UseProposal {
+	spaceId: number | undefined;
+	proposalId: number | undefined;
+}
 
-	return useQuery<Proposal>({
-		queryKey: ["proposal", proposalId],
+export function useProposal({ spaceId, proposalId }: UseProposal) {
+	return useQuery({
+		queryKey: ["proposal", { proposalId }],
 		queryFn: async () => {
-			// const data = [] as unknown[]
-			// return proposalSchema.parse(data)
-			return dummyProposals[0] as Proposal;
+			if (typeof spaceId !== "number" || typeof proposalId !== "number") {
+				throw new Error("Invalid spaceId or proposalId");
+			}
+
+			const data = await decgov_backend.get_proposal(spaceId, proposalId);
+
+			const proposal = data[0];
+
+			if (!proposal) {
+				throw new Error("Fetch proposal failed");
+			}
+
+			return proposal;
 		},
-		enabled: typeof proposalId === "number",
+		enabled: typeof spaceId === "number" && typeof proposalId === "number",
 	});
 }

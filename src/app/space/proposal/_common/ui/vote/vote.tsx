@@ -1,8 +1,10 @@
-import { ProposalOption } from "~/app/_common/types/options";
-import { Proposal } from "~/app/_common/types/proposals";
-import { Space } from "~/app/_common/types/spaces";
 import { Card, CardContent } from "~/sushi-ui/components/card";
 import { VoteModal } from "./vote-modal";
+import {
+	Proposal,
+	ProposalOption,
+	Space,
+} from "~/app/_common/lib/declarations/decgov_backend.did";
 
 export function Vote({
 	space,

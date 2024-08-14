@@ -4,12 +4,14 @@ import numbro from "numbro";
 import React, { useCallback, useState } from "react";
 import { Address } from "viem";
 import { useAccount, useSignMessage } from "wagmi";
-import { useVotingPower } from "~/app/_common/lib/hooks/useVotingPower";
+import {
+	Proposal,
+	ProposalOption,
+	Space,
+} from "~/app/_common/lib/declarations/decgov_backend.did";
+import { useVotingPower } from "~/app/_common/lib/hooks/use-voting-power";
 import { shortenAddress } from "~/app/_common/lib/shorten-address";
 import { ChainType } from "~/app/_common/types/chain-type";
-import { ProposalOption } from "~/app/_common/types/options";
-import { Proposal } from "~/app/_common/types/proposals";
-import { Space } from "~/app/_common/types/spaces";
 import {
 	Button,
 	Dialog,
@@ -54,7 +56,7 @@ function EvmVote({
 
 	const { data: power, isLoading } = useVotingPower({
 		spaceId: space.id,
-		voter: address!,
+		voter: address,
 	});
 
 	const { mutate } = useMutation<void, Error, EvmVote>({
@@ -91,10 +93,12 @@ function EvmVote({
 	const { signMessage } = useSignMessage({
 		mutation: {
 			onSuccess: async (signature) => {
+				if (!address) return;
+
 				mutate({
 					spaceId: space.id,
 					optionId: option.id,
-					address: address!,
+					address: address,
 					signature: signature,
 				});
 			},
@@ -102,10 +106,12 @@ function EvmVote({
 	});
 
 	const sign = useCallback(() => {
+		if (!address) return;
+
 		const message = JSON.stringify({
 			spaceId: space.id,
 			optionId: option.id,
-			address: address!,
+			address: address,
 		});
 
 		signMessage({
@@ -125,7 +131,7 @@ function EvmVote({
 			<List>
 				<List.Control>
 					<List.KeyValue title="Address">
-						{shortenAddress(address!)}
+						{address ? shortenAddress(address) : "Not connected"}
 					</List.KeyValue>
 					<List.KeyValue title="Power">
 						{isLoading ? (
@@ -144,7 +150,7 @@ function EvmVote({
 }
 
 function BtcVote() {
-	return <div></div>;
+	return <div>-</div>;
 }
 
 export function VoteModal({

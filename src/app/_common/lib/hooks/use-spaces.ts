@@ -1,14 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-
-import { Space, dummySpaces } from "~/app/_common/types/spaces";
+import { decgov_backend } from "../declarations";
 
 export function useSpaces() {
-	return useQuery<Space[]>({
+	return useQuery({
 		queryKey: ["spaces"],
 		queryFn: async () => {
-			// const data = [] as unknown[]
-			// return z.array(spaceSchema).parse(data)
-			return dummySpaces;
+			const data = await decgov_backend.get_spaces();
+
+			const spaces = data[0];
+
+			if (!spaces) {
+				throw new Error("Fetch spaces failed");
+			}
+
+			return spaces;
 		},
 	});
 }

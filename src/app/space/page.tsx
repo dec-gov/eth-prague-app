@@ -3,8 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useProposalsBySpace } from "~/app/_common/lib/hooks/use-proposals-by-space";
-import { useSpace } from "~/app/_common/lib/hooks/useSpace";
-import { useStrategiesBySpace } from "~/app/_common/lib/hooks/useStrategiesBySpace";
+import { useSpace } from "~/app/_common/lib/hooks/use-space";
+import { useStrategiesBySpace } from "~/app/_common/lib/hooks/use-strategies-by-space";
 import { Sidebar } from "./_common/ui/sidebar";
 import { Events } from "./_common/ui/tabs/events";
 import { Proposals } from "./_common/ui/tabs/proposals";

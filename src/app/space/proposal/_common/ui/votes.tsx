@@ -1,25 +1,32 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { ProposalOptionVote } from "~/app/_common/types/votes";
 import { Card } from "~/sushi-ui";
 import { DataTable } from "~/sushi-ui/components/data-table/index";
 import numeral from "numbro";
+import { ProposalOptionVote } from "~/app/_common/lib/declarations/decgov_backend.did";
 
 const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
-	{ id: "voter", header: "Voter", cell: ({ row }) => row.original.address },
+	{
+		id: "voter",
+		header: "Voter",
+		cell: ({ row }) => row.original.user_address,
+	},
 	{
 		id: "option",
 		header: "Option",
-		cell: ({ row }) => row.original.optionId,
+		cell: ({ row }) => row.original.option_id,
 	},
 	{
 		id: "power",
 		header: "Voting Power",
-		cell: ({ row }) => numeral(Number(row.original.power)).format("0.00a"),
+		cell: ({ row }) =>
+			numeral(Number(row.original.voting_power)).format("0.00a"),
 	},
 ];
 
 export function Votes({ optionVotes }: { optionVotes: ProposalOptionVote[] }) {
-	const sorted = optionVotes.sort((a, b) => (a.power > b.power ? -1 : 1));
+	const sorted = optionVotes.sort((a, b) =>
+		a.voting_power > b.voting_power ? -1 : 1,
+	);
 
 	return (
 		<div className="space-y-4">
