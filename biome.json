@@ -6,6 +6,9 @@
       "recommended": true,
       "a11y": {
         "useKeyWithClickEvents": "off"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off"
       }
     }
   },

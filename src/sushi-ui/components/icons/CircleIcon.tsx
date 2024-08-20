@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import { FC } from "react";
+import classNames from 'classnames'
+import { FC } from 'react'
 
-import { IconProps } from "../../types";
+import { IconProps } from '../../types'
 
 interface CircleWithText extends IconProps {
-	text?: string | number;
+	text?: string | number
 }
 
 export const CircleIcon: FC<CircleWithText> = ({
@@ -19,11 +19,11 @@ export const CircleIcon: FC<CircleWithText> = ({
 			stroke="currentColor"
 			fontSize="1.5rem"
 			strokeWidth="2"
-			className={classNames("shrink-0 block rounded-full", className)}
+			className={classNames('shrink-0 block rounded-full', className)}
 			{...props}
 		>
 			<circle cx="12" cy="12" r="9.6" />
-			{typeof text !== "undefined" && (
+			{typeof text !== 'undefined' && (
 				<text
 					x="12"
 					y="16"
@@ -36,5 +36,5 @@ export const CircleIcon: FC<CircleWithText> = ({
 				</text>
 			)}
 		</svg>
-	);
-};
+	)
+}

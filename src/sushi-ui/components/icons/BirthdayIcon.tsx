@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const BirthdayIcon: IconComponent = (props) => {
 	return (
@@ -32,5 +32,5 @@ export const BirthdayIcon: IconComponent = (props) => {
 				/>
 			</defs>
 		</svg>
-	);
-};
+	)
+}

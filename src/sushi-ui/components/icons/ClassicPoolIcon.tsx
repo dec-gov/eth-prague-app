@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const ClassicPoolIcon: IconComponent = (props) => {
 	return (
@@ -62,7 +62,7 @@ export const ClassicPoolIcon: IconComponent = (props) => {
 				</linearGradient>
 			</defs>
 		</svg>
-	);
-};
+	)
+}
 
-export default ClassicPoolIcon;
+export default ClassicPoolIcon

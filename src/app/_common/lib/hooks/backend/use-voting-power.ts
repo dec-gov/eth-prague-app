@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { Address } from "viem";
+import { useQuery } from '@tanstack/react-query'
+import { Address } from 'viem'
 
 interface UseVotingPower {
-	voter: Address | undefined;
-	spaceId: number;
-	blockNumber?: number | undefined;
+	voter: Address | undefined
+	spaceId: number
+	blockNumber?: number | undefined
 }
 
 export function useVotingPower({
@@ -13,7 +13,7 @@ export function useVotingPower({
 	voter,
 }: UseVotingPower) {
 	return useQuery({
-		queryKey: ["voting-power", voter, spaceId, blockNumber],
+		queryKey: ['voting-power', voter, spaceId, blockNumber],
 		queryFn: async () => {
 			// let url = process.env.NEXT_PUBLIC_BACKEND_API
 
@@ -30,8 +30,8 @@ export function useVotingPower({
 			// )
 
 			// return BigInt(res.votingPower)
-			return BigInt(0);
+			return BigInt(0)
 		},
-		enabled: typeof voter === "string" && typeof spaceId === "number",
-	});
+		enabled: typeof voter === 'string' && typeof spaceId === 'number',
+	})
 }

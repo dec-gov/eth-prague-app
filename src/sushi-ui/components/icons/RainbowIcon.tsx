@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const RainbowIcon: IconComponent = (props) => {
 	return (
@@ -28,5 +28,5 @@ export const RainbowIcon: IconComponent = (props) => {
 				</linearGradient>
 			</defs>
 		</svg>
-	);
-};
+	)
+}

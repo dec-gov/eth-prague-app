@@ -1,35 +1,35 @@
-import classNames from "classnames";
-import React, { ReactNode } from "react";
+import classNames from 'classnames'
+import React, { ReactNode } from 'react'
 
-import { PolymorphicComponentProps } from "../../types";
-import { SkeletonCircle, SkeletonText } from "../skeleton";
+import { PolymorphicComponentProps } from '../../types'
+import { SkeletonCircle, SkeletonText } from '../skeleton'
 
 interface Props {
-	title: ReactNode;
-	subtitle?: ReactNode;
-	onClick?(): void;
-	value?: ReactNode;
-	loading?: boolean;
+	title: ReactNode
+	subtitle?: ReactNode
+	onClick?(): void
+	value?: ReactNode
+	loading?: boolean
 }
 
 export type ListItemProps<
 	P extends React.ElementType,
 	C extends React.ElementType,
 > = {
-	icon?: P;
+	icon?: P
 	iconProps: React.ComponentProps<P> & {
-		width?: number;
-		height?: number;
-		className?: string;
-	};
-} & PolymorphicComponentProps<C, Props>;
+		width?: number
+		height?: number
+		className?: string
+	}
+} & PolymorphicComponentProps<C, Props>
 
 export type ListItemComponent = <
-	P extends React.ElementType = "svg",
-	C extends React.ElementType = "button",
+	P extends React.ElementType = 'svg',
+	C extends React.ElementType = 'button',
 >(
 	props: ListItemProps<P, C>,
-) => React.ReactElement | null;
+) => React.ReactElement | null
 
 export const ListItem: ListItemComponent = ({
 	as,
@@ -43,7 +43,7 @@ export const ListItem: ListItemComponent = ({
 	loading = false,
 	...rest
 }) => {
-	const Component = as || "button";
+	const Component = as || 'button'
 
 	return (
 		<Component
@@ -52,8 +52,8 @@ export const ListItem: ListItemComponent = ({
 			onClick={onClick}
 			className={classNames(
 				className,
-				subtitle ? "items-start" : "items-center",
-				"relative flex gap-4 px-3 py-3 w-full cursor-pointer",
+				subtitle ? 'items-start' : 'items-center',
+				'relative flex gap-4 px-3 py-3 w-full cursor-pointer',
 			)}
 		>
 			{loading ? (
@@ -81,7 +81,7 @@ export const ListItem: ListItemComponent = ({
 								...iconProps,
 								className: classNames(
 									iconProps?.className,
-									"text-blue-500 rounded-full",
+									'text-blue-500 rounded-full',
 								),
 							})}
 						</div>
@@ -96,7 +96,7 @@ export const ListItem: ListItemComponent = ({
 							</span>
 						)}
 					</div>
-					{typeof value === "string" ? (
+					{typeof value === 'string' ? (
 						<span className="text-xs text-gray-500 dark:text-slate-500">
 							{value}
 						</span>
@@ -106,5 +106,5 @@ export const ListItem: ListItemComponent = ({
 				</>
 			)}
 		</Component>
-	);
-};
+	)
+}

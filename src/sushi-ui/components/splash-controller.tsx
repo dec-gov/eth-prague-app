@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react'
 
-import { SushiIcon } from "./icons/SushiIcon";
+import { SushiIcon } from './icons/SushiIcon'
 
 const Splash: FC = () => {
 	return (
@@ -12,14 +12,14 @@ const Splash: FC = () => {
 				<div className="w-[50px] h-[5px] bg-black opacity-20 absolute top-[51px] left-0 rounded-[50%] animate-shadow" />
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const SplashController: FC<{ children: ReactNode; show?: boolean }> = ({
 	children,
 	show = false,
 }) => {
-	return <>{show ? <Splash /> : children}</>;
-};
+	return <>{show ? <Splash /> : children}</>
+}
 
-export { Splash, SplashController };
+export { Splash, SplashController }

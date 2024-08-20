@@ -1,19 +1,19 @@
-import { InformationCircleIcon } from "@heroicons/react/20/solid";
-import React, { FC, ReactNode } from "react";
+import { InformationCircleIcon } from '@heroicons/react/20/solid'
+import React, { FC, ReactNode } from 'react'
 
-import classNames from "classnames";
-import { IconComponent, IconProps } from "../types";
+import classNames from 'classnames'
+import { IconComponent, IconProps } from '../types'
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "./tooltip";
+} from './tooltip'
 
 export const Explainer: FC<{
-	children: ReactNode;
-	icon?: IconComponent;
-	iconProps?: IconProps;
+	children: ReactNode
+	icon?: IconComponent
+	iconProps?: IconProps
 }> = ({ icon: Icon, iconProps, children }) => {
 	return (
 		<TooltipProvider>
@@ -21,7 +21,7 @@ export const Explainer: FC<{
 				<TooltipTrigger asChild>
 					{Icon ? (
 						<Icon
-							className={classNames(iconProps?.className, "self-center")}
+							className={classNames(iconProps?.className, 'self-center')}
 							{...iconProps}
 						/>
 					) : (
@@ -30,7 +30,7 @@ export const Explainer: FC<{
 							height={16}
 							className={classNames(
 								iconProps?.className,
-								"self-center text-muted-foreground",
+								'self-center text-muted-foreground',
 							)}
 						/>
 					)}
@@ -40,5 +40,5 @@ export const Explainer: FC<{
 				</TooltipContent>
 			</Tooltip>
 		</TooltipProvider>
-	);
-};
+	)
+}

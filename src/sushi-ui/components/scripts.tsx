@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import Script from "next/script";
+import Script from 'next/script'
 
 export const GoogleAnalytics = () => {
 	return (
 		<>
 			<Script
 				strategy="afterInteractive"
-				src={"https://www.googletagmanager.com/gtag/js?id=G-JW8KWJ48EF"}
+				src={'https://www.googletagmanager.com/gtag/js?id=G-JW8KWJ48EF'}
 			/>
 			<Script
 				id="gtag-init"
@@ -24,8 +24,8 @@ export const GoogleAnalytics = () => {
 				}}
 			/>
 		</>
-	);
-};
+	)
+}
 
 export const HotJar = () => {
 	return (
@@ -45,5 +45,5 @@ export const HotJar = () => {
       `,
 			}}
 		/>
-	);
-};
+	)
+}

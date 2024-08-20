@@ -2,8 +2,8 @@ import {
 	Strategy,
 	isBtcStrategy,
 	isEvmStrategy,
-} from "~/app/_common/types/strategies";
-import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
+} from '~/app/_common/types/strategies'
+import { Card, CardContent, CardHeader } from '~/sushi-ui/components/card'
 
 function StrategyContent({ strategy }: { strategy: Strategy }) {
 	if (isEvmStrategy(strategy)) {
@@ -25,7 +25,7 @@ function StrategyContent({ strategy }: { strategy: Strategy }) {
 					</div>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (isBtcStrategy(strategy)) {
@@ -43,7 +43,7 @@ function StrategyContent({ strategy }: { strategy: Strategy }) {
 					</div>
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
@@ -66,5 +66,5 @@ export function Strategies({ strategies }: { strategies: Strategy[] }) {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

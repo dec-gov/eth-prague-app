@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import React, { FC, ReactNode } from "react";
+import classNames from 'classnames'
+import React, { FC, ReactNode } from 'react'
 
 export interface ListLabelProps {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 
 export const ListLabel: FC<ListLabelProps> = ({ children, className }) => {
@@ -11,10 +11,10 @@ export const ListLabel: FC<ListLabelProps> = ({ children, className }) => {
 		<span
 			className={classNames(
 				className,
-				"flex justify-start text-xs font-medium text-gray-500 dark:text-slate-400 px-2",
+				'flex justify-start text-xs font-medium text-gray-500 dark:text-slate-400 px-2',
 			)}
 		>
 			{children}
 		</span>
-	);
-};
+	)
+}

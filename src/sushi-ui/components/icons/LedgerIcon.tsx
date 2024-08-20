@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const LedgerIcon: IconComponent = (props) => {
 	return (
@@ -13,5 +13,5 @@ export const LedgerIcon: IconComponent = (props) => {
 				fill="black"
 			/>
 		</svg>
-	);
-};
+	)
+}

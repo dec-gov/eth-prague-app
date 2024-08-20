@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const CheckIcon: IconComponent = (props) => {
 	return (
@@ -14,5 +14,5 @@ export const CheckIcon: IconComponent = (props) => {
 		>
 			<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
 		</svg>
-	);
-};
+	)
+}

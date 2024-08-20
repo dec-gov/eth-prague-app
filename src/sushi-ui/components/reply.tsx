@@ -1,9 +1,9 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'react'
 
-import classNames from "classnames";
+import classNames from 'classnames'
 
 interface ReplyContentProps extends React.HTMLAttributes<HTMLDivElement> {
-	children: React.ReactNode;
+	children: React.ReactNode
 }
 
 const ReplyContent = forwardRef<HTMLDivElement, ReplyContentProps>(
@@ -14,17 +14,17 @@ const ReplyContent = forwardRef<HTMLDivElement, ReplyContentProps>(
 				ref={ref}
 				className={classNames(
 					className,
-					"flex flex-col flex-1 w-full border border-accent bg-secondary p-4 rounded-xl",
+					'flex flex-col flex-1 w-full border border-accent bg-secondary p-4 rounded-xl',
 				)}
 			>
 				{children}
 			</div>
-		);
+		)
 	},
-);
-ReplyContent.displayName = "ReplyContent";
+)
+ReplyContent.displayName = 'ReplyContent'
 
-type ReplyProps = React.HTMLAttributes<HTMLDivElement>;
+type ReplyProps = React.HTMLAttributes<HTMLDivElement>
 
 const ReplyArrow = forwardRef<
 	HTMLDivElement,
@@ -34,9 +34,9 @@ const ReplyArrow = forwardRef<
 		<div className="absolute left-2 top-0 bottom-0 w-5 h-full">
 			<div className="absolute left-0 bottom-0 top-0 right-0 h-[50%] border-b border-l rounded-bl-[20px] border-accent" />
 		</div>
-	);
-});
-ReplyArrow.displayName = "ReplyArrow";
+	)
+})
+ReplyArrow.displayName = 'ReplyArrow'
 
 const Reply = forwardRef<HTMLDivElement, ReplyProps>(
 	({ className, children, ...props }, ref) => {
@@ -44,14 +44,14 @@ const Reply = forwardRef<HTMLDivElement, ReplyProps>(
 			<div
 				{...props}
 				ref={ref}
-				className={classNames(className, "pl-2 relative flex flex-1 gap-4")}
+				className={classNames(className, 'pl-2 relative flex flex-1 gap-4')}
 			>
 				<ReplyArrow />
 				<div className="pl-7 w-full">{children}</div>
 			</div>
-		);
+		)
 	},
-);
-Reply.displayName = "Reply";
+)
+Reply.displayName = 'Reply'
 
-export { Reply, ReplyArrow, ReplyContent };
+export { Reply, ReplyArrow, ReplyContent }

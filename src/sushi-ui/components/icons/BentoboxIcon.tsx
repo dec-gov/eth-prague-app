@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const BentoboxIcon: IconComponent = (props) => {
 	return (
@@ -17,5 +17,5 @@ export const BentoboxIcon: IconComponent = (props) => {
 				fill="currentColor"
 			/>
 		</svg>
-	);
-};
+	)
+}

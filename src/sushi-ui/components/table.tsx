@@ -1,7 +1,7 @@
-import Link from "next/link";
-import * as React from "react";
+import Link from 'next/link'
+import * as React from 'react'
 
-import classNames from "classnames";
+import classNames from 'classnames'
 
 const Table = React.forwardRef<
 	HTMLTableElement,
@@ -10,12 +10,12 @@ const Table = React.forwardRef<
 	<div className="w-full overflow-auto">
 		<table
 			ref={ref}
-			className={classNames("w-full caption-bottom text-sm", className)}
+			className={classNames('w-full caption-bottom text-sm', className)}
 			{...props}
 		/>
 	</div>
-));
-Table.displayName = "Table";
+))
+Table.displayName = 'Table'
 
 const TableHeader = React.forwardRef<
 	HTMLTableSectionElement,
@@ -23,11 +23,11 @@ const TableHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<thead
 		ref={ref}
-		className={classNames("[&_tr]:border-b", className)}
+		className={classNames('[&_tr]:border-b', className)}
 		{...props}
 	/>
-));
-TableHeader.displayName = "TableHeader";
+))
+TableHeader.displayName = 'TableHeader'
 
 const TableBody = React.forwardRef<
 	HTMLTableSectionElement,
@@ -35,11 +35,11 @@ const TableBody = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<tbody
 		ref={ref}
-		className={classNames("[&_tr:last-child]:border-0", className)}
+		className={classNames('[&_tr:last-child]:border-0', className)}
 		{...props}
 	/>
-));
-TableBody.displayName = "TableBody";
+))
+TableBody.displayName = 'TableBody'
 
 const TableFooter = React.forwardRef<
 	HTMLTableSectionElement,
@@ -48,13 +48,13 @@ const TableFooter = React.forwardRef<
 	<tfoot
 		ref={ref}
 		className={classNames(
-			"bg-primary font-medium text-primary-foreground",
+			'bg-primary font-medium text-primary-foreground',
 			className,
 		)}
 		{...props}
 	/>
-));
-TableFooter.displayName = "TableFooter";
+))
+TableFooter.displayName = 'TableFooter'
 
 const TableRow = React.forwardRef<
 	HTMLTableRowElement,
@@ -63,13 +63,13 @@ const TableRow = React.forwardRef<
 	<tr
 		ref={ref}
 		className={classNames(
-			"border-b border-secondary transition-colors hover:bg-secondary hover:bg-opacity-50 data-[state=selected]:bg-secondary",
+			'border-b border-secondary transition-colors hover:bg-secondary hover:bg-opacity-50 data-[state=selected]:bg-secondary',
 			className,
 		)}
 		{...props}
 	/>
-));
-TableRow.displayName = "TableRow";
+))
+TableRow.displayName = 'TableRow'
 
 const TableHead = React.forwardRef<
 	HTMLTableCellElement,
@@ -78,13 +78,13 @@ const TableHead = React.forwardRef<
 	<th
 		ref={ref}
 		className={classNames(
-			"h-12 px-2 whitespace-nowrap text-left align-middle text-xs font-semibold text-muted-foreground [&:has([role=checkbox])]:pr-0",
+			'h-12 px-2 whitespace-nowrap text-left align-middle text-xs font-semibold text-muted-foreground [&:has([role=checkbox])]:pr-0',
 			className,
 		)}
 		{...props}
 	/>
-));
-TableHead.displayName = "TableHead";
+))
+TableHead.displayName = 'TableHead'
 
 const TableCell = React.forwardRef<
 	HTMLTableCellElement,
@@ -93,17 +93,17 @@ const TableCell = React.forwardRef<
 	<td
 		ref={ref}
 		className={classNames(
-			"h-[76px] relative text-sm font-medium p-4 align-middle [&:has([role=checkbox])]:pr-0",
+			'h-[76px] relative text-sm font-medium p-4 align-middle [&:has([role=checkbox])]:pr-0',
 			className,
 		)}
 		{...props}
 	/>
-));
-TableCell.displayName = "TableCell";
+))
+TableCell.displayName = 'TableCell'
 
 interface TableCellAsLink extends React.TdHTMLAttributes<HTMLTableCellElement> {
-	href: string;
-	external: boolean;
+	href: string
+	external: boolean
 }
 
 const TableCellAsLink = React.forwardRef<HTMLTableCellElement, TableCellAsLink>(
@@ -113,9 +113,9 @@ const TableCellAsLink = React.forwardRef<HTMLTableCellElement, TableCellAsLink>(
 				scroll={false}
 				shallow={true}
 				href={href}
-				target={external ? "_blank" : "_self"}
+				target={external ? '_blank' : '_self'}
 				className={classNames(
-					"flex items-center text-sm font-medium p-4 align-middle [&:has([role=checkbox])]:pr-0",
+					'flex items-center text-sm font-medium p-4 align-middle [&:has([role=checkbox])]:pr-0',
 					className,
 				)}
 			>
@@ -123,8 +123,8 @@ const TableCellAsLink = React.forwardRef<HTMLTableCellElement, TableCellAsLink>(
 			</Link>
 		</td>
 	),
-);
-TableCellAsLink.displayName = "TableCellAsLink";
+)
+TableCellAsLink.displayName = 'TableCellAsLink'
 
 const TableCaption = React.forwardRef<
 	HTMLTableCaptionElement,
@@ -132,11 +132,11 @@ const TableCaption = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<caption
 		ref={ref}
-		className={classNames("mt-4 text-sm text-muted-foreground", className)}
+		className={classNames('mt-4 text-sm text-muted-foreground', className)}
 		{...props}
 	/>
-));
-TableCaption.displayName = "TableCaption";
+))
+TableCaption.displayName = 'TableCaption'
 
 export {
 	Table,
@@ -148,4 +148,4 @@ export {
 	TableHead,
 	TableHeader,
 	TableRow,
-};
+}

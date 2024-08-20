@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const XDEFIWalletIcon: IconComponent = (props) => {
 	return (
@@ -44,5 +44,5 @@ export const XDEFIWalletIcon: IconComponent = (props) => {
 				</linearGradient>
 			</defs>
 		</svg>
-	);
-};
+	)
+}

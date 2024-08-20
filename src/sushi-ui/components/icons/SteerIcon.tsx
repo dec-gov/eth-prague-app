@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const SteerIcon: IconComponent = (props) => {
 	return (
@@ -11,7 +11,7 @@ export const SteerIcon: IconComponent = (props) => {
 		>
 			<title>Steer Icon</title>
 			<g
-				style={{ transformOrigin: "152.832px 88.777px;" }}
+				style={{ transformOrigin: '152.832px 88.777px;' }}
 				transform="matrix(1.002854943275, 0, 0, 1.00080704689, -153.26823721416, -88.848666422032)"
 			>
 				<g transform="matrix(1, 0, 0, 1, 144.283009, 86.927005)">
@@ -21,5 +21,5 @@ export const SteerIcon: IconComponent = (props) => {
 				</g>
 			</g>
 		</svg>
-	);
-};
+	)
+}

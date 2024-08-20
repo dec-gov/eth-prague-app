@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const YoutubeIcon: IconComponent = (props) => {
 	return (
@@ -13,5 +13,5 @@ export const YoutubeIcon: IconComponent = (props) => {
 				fill="currentcolor"
 			/>
 		</svg>
-	);
-};
+	)
+}

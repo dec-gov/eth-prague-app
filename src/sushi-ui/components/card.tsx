@@ -1,21 +1,21 @@
-import { type VariantProps, cva } from "class-variance-authority";
-import * as React from "react";
-import { ReactNode } from "react";
+import { type VariantProps, cva } from 'class-variance-authority'
+import * as React from 'react'
+import { ReactNode } from 'react'
 
-import classNames from "classnames";
-import { SkeletonText } from "./skeleton";
+import classNames from 'classnames'
+import { SkeletonText } from './skeleton'
 
-const cardVariants = cva("relative rounded-xl border border-accent", {
+const cardVariants = cva('relative rounded-xl border border-accent', {
 	variants: {
 		variant: {
-			default: "shadow-sm bg-white dark:bg-background",
-			outline: "",
+			default: 'shadow-sm bg-white dark:bg-background',
+			outline: '',
 		},
 	},
 	defaultVariants: {
-		variant: "default",
+		variant: 'default',
 	},
-});
+})
 
 export interface CardProps
 	extends React.ButtonHTMLAttributes<HTMLDivElement>,
@@ -29,27 +29,27 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 			{...props}
 		/>
 	),
-);
-Card.displayName = "Card";
+)
+Card.displayName = 'Card'
 
 interface CardOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
-	show: boolean;
+	show: boolean
 }
 
 const CardOverlay = React.forwardRef<HTMLDivElement, CardOverlayProps>(
 	({ show, className, ...props }, ref) => (
 		<div
-			data-state={show ? "active" : "inactive"}
+			data-state={show ? 'active' : 'inactive'}
 			ref={ref}
 			className={classNames(
-				"data-[state=active]:flex data-[state=inactive]:hidden rounded-xl z-10 bg-white/[0.8] dark:bg-slate-900/[0.8] pointer-events-none absolute inset-0 justify-center items-center",
+				'data-[state=active]:flex data-[state=inactive]:hidden rounded-xl z-10 bg-white/[0.8] dark:bg-slate-900/[0.8] pointer-events-none absolute inset-0 justify-center items-center',
 				className,
 			)}
 			{...props}
 		/>
 	),
-);
-CardOverlay.displayName = "CardOverlay";
+)
+CardOverlay.displayName = 'CardOverlay'
 
 const CardHeader = React.forwardRef<
 	HTMLDivElement,
@@ -58,13 +58,13 @@ const CardHeader = React.forwardRef<
 	<div
 		ref={ref}
 		className={classNames(
-			"flex flex-col space-y-1.5 p-6 whitespace-pre-wrap",
+			'flex flex-col space-y-1.5 p-6 whitespace-pre-wrap',
 			className,
 		)}
 		{...props}
 	/>
-));
-CardHeader.displayName = "CardHeader";
+))
+CardHeader.displayName = 'CardHeader'
 
 const CardTitle = React.forwardRef<
 	HTMLParagraphElement,
@@ -73,13 +73,13 @@ const CardTitle = React.forwardRef<
 	<h3
 		ref={ref}
 		className={classNames(
-			"text-lg font-semibold leading-none tracking-tight",
+			'text-lg font-semibold leading-none tracking-tight',
 			className,
 		)}
 		{...props}
 	/>
-));
-CardTitle.displayName = "CardTitle";
+))
+CardTitle.displayName = 'CardTitle'
 
 const CardDescription = React.forwardRef<
 	HTMLParagraphElement,
@@ -87,11 +87,11 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={classNames("text-sm text-muted-foreground", className)}
+		className={classNames('text-sm text-muted-foreground', className)}
 		{...props}
 	/>
-));
-CardDescription.displayName = "CardDescription";
+))
+CardDescription.displayName = 'CardDescription'
 
 const CardGroup = React.forwardRef<
 	HTMLDivElement,
@@ -99,11 +99,11 @@ const CardGroup = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={classNames("flex flex-col gap-3", className)}
+		className={classNames('flex flex-col gap-3', className)}
 		{...props}
 	/>
-));
-CardGroup.displayName = "CardGroup";
+))
+CardGroup.displayName = 'CardGroup'
 
 const CardLabel = React.forwardRef<
 	HTMLSpanElement,
@@ -112,31 +112,31 @@ const CardLabel = React.forwardRef<
 	<span
 		ref={ref}
 		className={classNames(
-			"font-normal text-xs text-gray-400 dark:text-slate-600",
+			'font-normal text-xs text-gray-400 dark:text-slate-600',
 			className,
 		)}
 		{...props}
 	/>
-));
-CardLabel.displayName = "CardLabel";
+))
+CardLabel.displayName = 'CardLabel'
 
 type CardItemProps =
-	| (Omit<React.HTMLAttributes<HTMLDivElement>, "title"> & {
-			title: ReactNode;
-			subtitle?: string;
-			children?: ReactNode;
-			skeleton?: never;
-			flex?: boolean;
-			className?: string;
+	| (Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> & {
+			title: ReactNode
+			subtitle?: string
+			children?: ReactNode
+			skeleton?: never
+			flex?: boolean
+			className?: string
 	  })
 	| {
-			title?: never;
-			subtitle?: boolean;
-			children?: never;
-			skeleton?: boolean;
-			flex?: boolean;
-			className?: string;
-	  };
+			title?: never
+			subtitle?: boolean
+			children?: never
+			skeleton?: boolean
+			flex?: boolean
+			className?: string
+	  }
 
 const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
 	({ skeleton, flex, subtitle, title, children, className, ...props }, ref) => {
@@ -151,7 +151,7 @@ const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
 						<SkeletonText fontSize="sm" />
 					</div>
 				</div>
-			);
+			)
 		}
 
 		return (
@@ -159,8 +159,8 @@ const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
 				ref={ref}
 				className={classNames(
 					className,
-					flex ? "flex justify-between items-center" : "grid grid-cols-2",
-					"gap-2",
+					flex ? 'flex justify-between items-center' : 'grid grid-cols-2',
+					'gap-2',
 				)}
 				{...props}
 			>
@@ -178,10 +178,10 @@ const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
 					</span>
 				</div>
 			</div>
-		);
+		)
 	},
-);
-CardItem.displayName = "CardItem";
+)
+CardItem.displayName = 'CardItem'
 
 const CardContent = React.forwardRef<
 	HTMLDivElement,
@@ -189,11 +189,11 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={classNames("p-6 pt-0 flex flex-col gap-6", className)}
+		className={classNames('p-6 pt-0 flex flex-col gap-6', className)}
 		{...props}
 	/>
-));
-CardContent.displayName = "CardContent";
+))
+CardContent.displayName = 'CardContent'
 
 const CardFooter = React.forwardRef<
 	HTMLDivElement,
@@ -201,11 +201,11 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={classNames(" flex items-center p-6 pt-0", className)}
+		className={classNames(' flex items-center p-6 pt-0', className)}
 		{...props}
 	/>
-));
-CardFooter.displayName = "CardFooter";
+))
+CardFooter.displayName = 'CardFooter'
 
 export {
 	Card,
@@ -218,4 +218,4 @@ export {
 	CardLabel,
 	CardOverlay,
 	CardTitle,
-};
+}

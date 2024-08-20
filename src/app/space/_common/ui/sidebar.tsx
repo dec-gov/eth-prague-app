@@ -1,12 +1,12 @@
-import classNames from "classnames";
-import { Space } from "~/app/_common/lib/declarations/decgov_backend.did";
-import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
+import classNames from 'classnames'
+import { Space } from '~/app/_common/lib/declarations/decgov_backend.did'
+import { Card, CardContent, CardHeader } from '~/sushi-ui/components/card'
 
 interface SidebarProps<T extends Readonly<string[]>> {
-	space: Space;
-	setTab: (tab: T[number]) => void;
-	currentTab: T[number];
-	tabs: T;
+	space: Space
+	setTab: (tab: T[number]) => void
+	currentTab: T[number]
+	tabs: T
 }
 
 export function Sidebar<T extends Readonly<string[]>>({
@@ -27,8 +27,8 @@ export function Sidebar<T extends Readonly<string[]>>({
 							key={tab}
 							onClick={() => setTab(tab)}
 							className={classNames(
-								tab === currentTab && "font-semibold !text-slate-200",
-								"cursor-pointer text-slate-400 hover:text-slate-100",
+								tab === currentTab && 'font-semibold !text-slate-200',
+								'cursor-pointer text-slate-400 hover:text-slate-100',
 							)}
 						>
 							{tab}
@@ -37,5 +37,5 @@ export function Sidebar<T extends Readonly<string[]>>({
 				</div>
 			</CardContent>
 		</Card>
-	);
+	)
 }

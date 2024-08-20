@@ -1,32 +1,32 @@
-import "../sushi-ui/index.css";
-import "@rainbow-me/rainbowkit/styles.css";
+import '../sushi-ui/index.css'
+import '@rainbow-me/rainbowkit/styles.css'
 
-import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
-import React from "react";
-import { Header } from "./_common/ui/header";
-import { Providers } from "./providers";
+import type { Metadata } from 'next'
+import { Inter, Roboto_Mono } from 'next/font/google'
+import React from 'react'
+import { Header } from './_common/ui/header'
+import { Providers } from './providers'
 
 const inter = Inter({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-inter",
-});
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-inter',
+})
 
 const roboto_mono = Roboto_Mono({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-roboto-mono",
-});
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-roboto-mono',
+})
 
 export const metadata: Metadata = {
-	title: "DecGov",
-};
+	title: 'DecGov',
+}
 
 export default function RootLayout({
 	children,
 }: {
-	children: React.ReactNode;
+	children: React.ReactNode
 }) {
 	return (
 		// <html lang="en" className="[color-scheme:dark]">
@@ -68,5 +68,5 @@ export default function RootLayout({
 				</div>
 			</body>
 		</html>
-	);
+	)
 }

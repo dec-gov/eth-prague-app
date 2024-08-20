@@ -1,19 +1,19 @@
-import { Card, CardContent } from "~/sushi-ui/components/card";
-import { VoteModal } from "./vote-modal";
+import { Card, CardContent } from '~/sushi-ui/components/card'
+import { VoteModal } from './vote-modal'
 import {
 	Proposal,
 	ProposalOption,
 	Space,
-} from "~/app/_common/lib/declarations/decgov_backend.did";
+} from '~/app/_common/lib/declarations/decgov_backend.did'
 
 export function Vote({
 	space,
 	proposal,
 	options,
 }: {
-	space: Space;
-	proposal: Proposal;
-	options: ProposalOption[];
+	space: Space
+	proposal: Proposal
+	options: ProposalOption[]
 }) {
 	return (
 		<div className="space-y-4">
@@ -33,5 +33,5 @@ export function Vote({
 				))}
 			</div>
 		</div>
-	);
+	)
 }

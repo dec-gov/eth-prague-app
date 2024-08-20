@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const GithubIcon: IconComponent = (props) => {
 	return (
@@ -16,5 +16,5 @@ export const GithubIcon: IconComponent = (props) => {
 				/>
 			</g>
 		</svg>
-	);
-};
+	)
+}

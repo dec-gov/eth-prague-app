@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const FailedMarkIcon: IconComponent = (props) => {
 	return (
@@ -32,8 +32,8 @@ export const FailedMarkIcon: IconComponent = (props) => {
 				strokeLinejoin="round"
 				strokeMiterlimit="10"
 				d="M 16 32 L 32 16 M 32 32 L 16 16"
-				style={{ animationDelay: "600ms" }}
+				style={{ animationDelay: '600ms' }}
 			/>
 		</svg>
-	);
-};
+	)
+}

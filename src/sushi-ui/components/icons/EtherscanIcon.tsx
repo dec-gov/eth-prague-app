@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const EtherscanIcon: IconComponent = (props) => (
 	<svg
@@ -19,4 +19,4 @@ export const EtherscanIcon: IconComponent = (props) => (
 			fill="#979695"
 		/>
 	</svg>
-);
+)

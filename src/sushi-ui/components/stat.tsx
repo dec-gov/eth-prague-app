@@ -1,24 +1,24 @@
-import { type VariantProps, cva } from "class-variance-authority";
-import classNames from "classnames";
-import { forwardRef } from "react";
+import { type VariantProps, cva } from 'class-variance-authority'
+import classNames from 'classnames'
+import { forwardRef } from 'react'
 
-const statVariants = cva("", {
+const statVariants = cva('', {
 	variants: {
 		size: {
-			xs: "flex flex-col gap-1",
-			sm: "flex flex-col gap-1",
-			default: "flex flex-col gap-1",
-			lg: "flex flex-col gap-1",
-			xl: "flex flex-col gap-1",
+			xs: 'flex flex-col gap-1',
+			sm: 'flex flex-col gap-1',
+			default: 'flex flex-col gap-1',
+			lg: 'flex flex-col gap-1',
+			xl: 'flex flex-col gap-1',
 		},
 	},
 	defaultVariants: {
-		size: "default",
+		size: 'default',
 	},
-});
+})
 
 interface StatProps
-	extends Omit<React.HTMLAttributes<HTMLDivElement>, "label" | "value">,
+	extends Omit<React.HTMLAttributes<HTMLDivElement>, 'label' | 'value'>,
 		VariantProps<typeof statVariants> {}
 
 const Stat = forwardRef<HTMLDivElement, StatProps>(
@@ -27,34 +27,34 @@ const Stat = forwardRef<HTMLDivElement, StatProps>(
 			<div ref={ref} className={statVariants({ size, className })}>
 				{children}
 			</div>
-		);
+		)
 	},
-);
-Stat.displayName = "Stat";
+)
+Stat.displayName = 'Stat'
 
-const statLabelVariants = cva("text-muted-foreground font-normal", {
+const statLabelVariants = cva('text-muted-foreground font-normal', {
 	variants: {
 		size: {
-			xs: "text-xs",
-			sm: "text-sm",
-			default: "text-base",
-			lg: "text-lg",
-			xl: "text-xl",
+			xs: 'text-xs',
+			sm: 'text-sm',
+			default: 'text-base',
+			lg: 'text-lg',
+			xl: 'text-xl',
 		},
 		align: {
-			left: "text-left",
-			center: "text-center",
-			right: "text-right",
+			left: 'text-left',
+			center: 'text-center',
+			right: 'text-right',
 		},
 	},
 	defaultVariants: {
-		size: "default",
-		align: "left",
+		size: 'default',
+		align: 'left',
 	},
-});
+})
 
 interface StatLabelProps
-	extends Omit<React.HTMLAttributes<HTMLSpanElement>, "label" | "value">,
+	extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'label' | 'value'>,
 		VariantProps<typeof statLabelVariants> {}
 
 const StatLabel = forwardRef<HTMLSpanElement, StatLabelProps>(
@@ -63,37 +63,37 @@ const StatLabel = forwardRef<HTMLSpanElement, StatLabelProps>(
 			<span ref={ref} className={statLabelVariants({ size, align, className })}>
 				{children}
 			</span>
-		);
+		)
 	},
-);
-StatLabel.displayName = "StatLabel";
+)
+StatLabel.displayName = 'StatLabel'
 
-const statValueVariants = cva("font-medium", {
+const statValueVariants = cva('font-medium', {
 	variants: {
 		size: {
-			xs: "text-xs",
-			sm: "text-sm",
-			default: "text-base",
-			lg: "text-lg",
-			xl: "text-xl",
-			"2xl": "font-bold text-2xl",
-			"3xl": "font-bold text-3xl",
-			"4xl": "font-bold text-4xl",
+			xs: 'text-xs',
+			sm: 'text-sm',
+			default: 'text-base',
+			lg: 'text-lg',
+			xl: 'text-xl',
+			'2xl': 'font-bold text-2xl',
+			'3xl': 'font-bold text-3xl',
+			'4xl': 'font-bold text-4xl',
 		},
 		align: {
-			left: "text-left",
-			center: "text-center",
-			right: "text-right",
+			left: 'text-left',
+			center: 'text-center',
+			right: 'text-right',
 		},
 	},
 	defaultVariants: {
-		size: "default",
-		align: "left",
+		size: 'default',
+		align: 'left',
 	},
-});
+})
 
 interface StatValueProps
-	extends Omit<React.HTMLAttributes<HTMLSpanElement>, "label" | "value">,
+	extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'label' | 'value'>,
 		VariantProps<typeof statValueVariants> {}
 
 const StatValue = forwardRef<HTMLSpanElement, StatValueProps>(
@@ -105,9 +105,9 @@ const StatValue = forwardRef<HTMLSpanElement, StatValueProps>(
 			>
 				{children}
 			</span>
-		);
+		)
 	},
-);
-StatValue.displayName = "StatValue";
+)
+StatValue.displayName = 'StatValue'
 
-export { Stat, StatLabel, StatValue };
+export { Stat, StatLabel, StatValue }

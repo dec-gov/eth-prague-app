@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const ShuffleIcon: IconComponent = (props) => {
 	return (
@@ -44,5 +44,5 @@ export const ShuffleIcon: IconComponent = (props) => {
 				d="M152.76794 93.858A64.00219 64.00219 0 0 1 200.93555 72H232M32 184H55.06445a64.00212 64.00212 0 0 0 48.16769-21.85814"
 			/>
 		</svg>
-	);
-};
+	)
+}

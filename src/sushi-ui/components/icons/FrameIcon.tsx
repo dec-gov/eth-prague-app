@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const FrameIcon: IconComponent = (props) => {
 	return (
@@ -29,5 +29,5 @@ export const FrameIcon: IconComponent = (props) => {
 				</g>
 			</g>
 		</svg>
-	);
-};
+	)
+}

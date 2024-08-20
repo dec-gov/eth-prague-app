@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const GnosisSafeIcon: IconComponent = (props) => {
 	return (
@@ -8,5 +8,5 @@ export const GnosisSafeIcon: IconComponent = (props) => {
 				stroke="#fff"
 			/>
 		</svg>
-	);
-};
+	)
+}

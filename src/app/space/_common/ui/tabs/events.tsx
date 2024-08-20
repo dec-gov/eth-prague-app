@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useState } from "react";
-import { Space } from "~/app/_common/lib/declarations/decgov_backend.did";
-import { useEventsBySpace } from "~/app/_common/lib/hooks/use-events-by-space";
-import { Event as EventType } from "~/app/_common/types/events";
-import { Button, Collapsible } from "~/sushi-ui";
-import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
+import Link from 'next/link'
+import { useState } from 'react'
+import { Space } from '~/app/_common/lib/declarations/decgov_backend.did'
+import { useEventsBySpace } from '~/app/_common/lib/hooks/backend/use-events-by-space'
+import { Event as EventType } from '~/app/_common/types/events'
+import { Button, Collapsible } from '~/sushi-ui'
+import { Card, CardContent, CardHeader } from '~/sushi-ui/components/card'
 
 function Event({ event }: { event: EventType }) {
-	const [isExpanded, setIsExpanded] = useState(false);
+	const [isExpanded, setIsExpanded] = useState(false)
 
 	return (
 		<div>
@@ -29,7 +29,7 @@ function Event({ event }: { event: EventType }) {
 								onClick={() => setIsExpanded(!isExpanded)}
 								className="cursor-pointer text-blue"
 							>
-								{isExpanded ? "Hide" : "Show"}
+								{isExpanded ? 'Hide' : 'Show'}
 							</div>
 						</div>
 						<Collapsible open={isExpanded}>
@@ -39,15 +39,15 @@ function Event({ event }: { event: EventType }) {
 				</CardContent>
 			</Card>
 		</div>
-	);
+	)
 }
 
 export function Events({ space }: { space: Space }) {
 	const { data: events, isLoading } = useEventsBySpace({
 		spaceId: space.id,
-	});
+	})
 
-	if (!events || isLoading) return <div>Loading...</div>;
+	if (!events || isLoading) return <div>Loading...</div>
 
 	return (
 		<div className="space-y-8">
@@ -63,5 +63,5 @@ export function Events({ space }: { space: Space }) {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

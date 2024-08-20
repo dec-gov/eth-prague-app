@@ -8,7 +8,7 @@ export const idlFactory = ({ IDL }) => {
 		option_id: IDL.Nat32,
 		user_address: IDL.Text,
 		timestamp: IDL.Nat32,
-		voting_power: IDL.Nat64,
+		voting_power: IDL.Nat,
 	})
 	const ProposalOption = IDL.Record({
 		id: IDL.Nat32,
@@ -22,7 +22,7 @@ export const idlFactory = ({ IDL }) => {
 	const Proposal = IDL.Record({
 		id: IDL.Nat32,
 		title: IDL.Text,
-		date_created: IDL.Nat32,
+		date_created: IDL.Nat64,
 		mechanism: IDL.Nat32,
 		description: IDL.Text,
 		options: IDL.Vec(ProposalOption),
@@ -36,10 +36,11 @@ export const idlFactory = ({ IDL }) => {
 		website_link: IDL.Text,
 		icon_link: IDL.Text,
 		min_vote_role: IDL.Nat32,
-		min_vote_power: IDL.Nat64,
+		min_vote_power: IDL.Nat,
 		proposals: IDL.Vec(Proposal),
-		quorum: IDL.Nat32,
+		quorum: IDL.Nat,
 	})
+	const InsertProposalOption = IDL.Record({ name: IDL.Text })
 	return IDL.Service({
 		delete_proposal: IDL.Func([IDL.Nat32, IDL.Nat32], [IDL.Opt(Proposal)], []),
 		delete_proposal_option: IDL.Func(
@@ -86,7 +87,7 @@ export const idlFactory = ({ IDL }) => {
 			['query'],
 		),
 		insert_proposal: IDL.Func(
-			[IDL.Nat32, IDL.Text, IDL.Text, IDL.Nat32, IDL.Nat32],
+			[IDL.Nat32, IDL.Text, IDL.Text, IDL.Nat32, IDL.Vec(InsertProposalOption)],
 			[IDL.Opt(Proposal)],
 			[],
 		),
@@ -103,8 +104,8 @@ export const idlFactory = ({ IDL }) => {
 				IDL.Nat32,
 				IDL.Nat32,
 				IDL.Nat32,
-				IDL.Nat64,
-				IDL.Nat32,
+				IDL.Nat,
+				IDL.Nat,
 			],
 			[Space],
 			[],
@@ -118,31 +119,13 @@ export const idlFactory = ({ IDL }) => {
 				IDL.Nat32,
 				IDL.Nat32,
 				IDL.Text,
-				IDL.Nat64,
+				IDL.Nat,
 			],
 			[IDL.Opt(ProposalOption)],
 			[],
 		),
 		update_proposal: IDL.Func(
-			[IDL.Nat32, IDL.Nat32, IDL.Text, IDL.Text, IDL.Nat32, IDL.Nat32],
-			[IDL.Opt(Proposal)],
-			[],
-		),
-		update_proposal_option: IDL.Func(
-			[
-				IDL.Nat32,
-				IDL.Nat32,
-				IDL.Nat32,
-				IDL.Text,
-				IDL.Text,
-				IDL.Text,
-				IDL.Nat32,
-			],
-			[IDL.Opt(ProposalOption)],
-			[],
-		),
-		update_proposal_options: IDL.Func(
-			[IDL.Nat32, IDL.Nat32, IDL.Vec(ProposalOption)],
+			[IDL.Nat32, IDL.Nat32, IDL.Text, IDL.Text, IDL.Nat32],
 			[IDL.Opt(Proposal)],
 			[],
 		),
@@ -155,8 +138,8 @@ export const idlFactory = ({ IDL }) => {
 				IDL.Nat32,
 				IDL.Nat32,
 				IDL.Nat32,
-				IDL.Nat64,
-				IDL.Nat32,
+				IDL.Nat,
+				IDL.Nat,
 			],
 			[IDL.Opt(Space)],
 			[],
@@ -172,13 +155,15 @@ export const idlFactory = ({ IDL }) => {
 				IDL.Nat32,
 				IDL.Nat32,
 				IDL.Text,
-				IDL.Nat64,
+				IDL.Nat,
 			],
 			[IDL.Opt(ProposalOptionVote)],
 			[],
 		),
 	})
 }
+
+// eslint-disable-next-line
 export const init = ({ IDL }) => {
 	return []
 }

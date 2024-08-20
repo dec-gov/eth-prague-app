@@ -1,16 +1,16 @@
-import { ImageLoaderProps } from "next/image";
+import { ImageLoaderProps } from 'next/image'
 
-const normalizeSrc = (src: string) => (src[0] === "/" ? src.slice(1) : src);
+const normalizeSrc = (src: string) => (src[0] === '/' ? src.slice(1) : src)
 
 export function cloudinaryFetchLoader({
 	src,
 	width,
 	quality,
 }: ImageLoaderProps) {
-	const params = ["f_auto", "c_limit", `w_${width}`, `q_${quality || "auto"}`];
-	return `https://cdn.sushi.com/image/fetch/${params.join(",")}/${normalizeSrc(
+	const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]
+	return `https://cdn.sushi.com/image/fetch/${params.join(',')}/${normalizeSrc(
 		src,
-	)}`;
+	)}`
 }
 
 export function cloudinaryImageLoader({
@@ -18,10 +18,10 @@ export function cloudinaryImageLoader({
 	width,
 	quality,
 }: ImageLoaderProps) {
-	const params = ["f_auto", "c_limit", `w_${width}`, `q_${quality || "auto"}`];
-	return `https://cdn.sushi.com/image/upload/${params.join(",")}/${normalizeSrc(
+	const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]
+	return `https://cdn.sushi.com/image/upload/${params.join(',')}/${normalizeSrc(
 		src,
-	)}`;
+	)}`
 }
 
 export function cloudinaryLogoFetchLoader({
@@ -30,14 +30,14 @@ export function cloudinaryLogoFetchLoader({
 	quality: _quality,
 }: ImageLoaderProps) {
 	const params = [
-		"f_auto",
-		"c_limit",
+		'f_auto',
+		'c_limit',
 		`w_${width}`,
 		// `q_${quality || 'auto'}`
-	];
+	]
 	return `https://cdn.sushi.com/image/fetch/${params.join(
-		",",
-	)}/d_unknown.png/${normalizeSrc(src)}`;
+		',',
+	)}/d_unknown.png/${normalizeSrc(src)}`
 }
 
 export function cloudinaryLogoImageLoader({
@@ -46,14 +46,14 @@ export function cloudinaryLogoImageLoader({
 	quality: _quality,
 }: ImageLoaderProps) {
 	const params = [
-		"f_auto",
-		"c_limit",
+		'f_auto',
+		'c_limit',
 		`w_${width}`,
 		// `q_${quality || 'auto'}`
-	];
+	]
 	return `https://cdn.sushi.com/image/upload/${params.join(
-		",",
-	)}/d_unknown.png/${normalizeSrc(src)}`;
+		',',
+	)}/d_unknown.png/${normalizeSrc(src)}`
 }
 
 // from next/image

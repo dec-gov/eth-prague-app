@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { Transition } from "@headlessui/react";
-import classNames from "classnames";
-import React, { FC, Fragment } from "react";
+import { Transition } from '@headlessui/react'
+import classNames from 'classnames'
+import React, { FC, Fragment } from 'react'
 
-import { SushiIcon } from "./icons/SushiIcon";
+import { SushiIcon } from './icons/SushiIcon'
 
-interface LoaderProps extends React.ComponentProps<"svg"> {
-	size?: number;
-	stroke?: string;
-	strokeWidth?: number;
-	className?: string;
-	circleClassName?: string;
+interface LoaderProps extends React.ComponentProps<'svg'> {
+	size?: number
+	stroke?: string
+	strokeWidth?: number
+	className?: string
+	circleClassName?: string
 }
 
 /**
@@ -41,7 +41,7 @@ export const Loader: FC<LoaderProps> = ({
 				strokeWidth={strokeWidth}
 				className={classNames(
 					circleClassName,
-					"text-gray-400 dark:text-white/[0.12]",
+					'text-gray-400 dark:text-white/[0.12]',
 				)}
 			/>
 			<path
@@ -49,11 +49,11 @@ export const Loader: FC<LoaderProps> = ({
 				stroke="currentColor"
 				strokeWidth={strokeWidth}
 				strokeLinecap="round"
-				className={classNames(className, "text-gray-700 dark:text-white")}
+				className={classNames(className, 'text-gray-700 dark:text-white')}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
 /**
  * @deprecated
@@ -74,9 +74,9 @@ export const LoadingOverlay: FC<{ show?: boolean }> = ({ show }) => {
 				<LogoLoader width={36} height={36} />
 			</div>
 		</Transition>
-	);
-};
+	)
+}
 
 export const LogoLoader: FC<LoaderProps> = (props) => {
-	return <SushiIcon className="animate-heartbeat" {...props} />;
-};
+	return <SushiIcon className="animate-heartbeat" {...props} />
+}

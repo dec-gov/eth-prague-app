@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const HalfCircleIcon: IconComponent = (props) => {
 	return (
@@ -13,5 +13,5 @@ export const HalfCircleIcon: IconComponent = (props) => {
 				fill="currentColor"
 			/>
 		</svg>
-	);
-};
+	)
+}

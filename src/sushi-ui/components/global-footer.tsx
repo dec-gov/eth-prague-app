@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import dynamic from "next/dynamic";
-import { ReactNode, useCallback } from "react";
-import { ExtractProps } from "../types";
-import { Container, ContainerProps } from "./container";
+import dynamic from 'next/dynamic'
+import { ReactNode, useCallback } from 'react'
+import { ExtractProps } from '../types'
+import { Container, ContainerProps } from './container'
 import {
 	DiscordIcon,
 	GithubIcon,
 	InstagramIcon,
 	SushiWithTextIcon,
 	TwitterIcon,
-} from "./icons";
-import { LinkExternal } from "./link";
+} from './icons'
+import { LinkExternal } from './link'
 
 export interface FooterProps
 	extends React.HTMLProps<HTMLDivElement>,
-		Pick<ExtractProps<ContainerProps>, "maxWidth"> {
-	children?: ReactNode;
+		Pick<ExtractProps<ContainerProps>, 'maxWidth'> {
+	children?: ReactNode
 }
 
 const config: Record<
@@ -28,100 +28,100 @@ const config: Record<
 	  >[]
 > = {
 	Services: {
-		Swap: { href: "https://www.sushi.com/swap" },
-		Earn: { href: "https://www.sushi.com/earn" },
-		Payments: { href: "https://www.sushi.com/furo" },
-		Analytics: { href: "https://www.sushi.com/analytics" },
+		Swap: { href: 'https://www.sushi.com/swap' },
+		Earn: { href: 'https://www.sushi.com/earn' },
+		Payments: { href: 'https://www.sushi.com/furo' },
+		Analytics: { href: 'https://www.sushi.com/analytics' },
 	},
 	Help: {
 		Academy: {
-			href: "https://www.sushi.com/academy",
-			target: "_blank",
-			rel: "noopener noreferrer",
+			href: 'https://www.sushi.com/academy',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
-		"About Us": {
-			href: "https://docs.sushi.com",
-			target: "_blank",
-			rel: "noopener noreferrer",
+		'About Us': {
+			href: 'https://docs.sushi.com',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
-		"Discord Support": {
-			href: "https://sushi.com/discord",
-			target: "_blank",
-			rel: "noopener noreferrer",
+		'Discord Support': {
+			href: 'https://sushi.com/discord',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
-		"Twitter Support": {
-			href: "https://twitter.com/sushiswap",
-			target: "_blank",
-			rel: "noopener noreferrer",
+		'Twitter Support': {
+			href: 'https://twitter.com/sushiswap',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
-		"Forum Support": {
-			href: "https://forum.sushi.com",
-			target: "_blank",
-			rel: "noopener noreferrer",
+		'Forum Support': {
+			href: 'https://forum.sushi.com',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
 	},
 	Developers: {
 		GitBook: {
-			href: "https://docs.sushi.com",
-			target: "_blank",
-			rel: "noopener noreferrer",
+			href: 'https://docs.sushi.com',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
 		GitHub: {
-			href: "https://github.com/sushiswap",
-			target: "_blank",
-			rel: "noopener noreferrer",
+			href: 'https://github.com/sushiswap',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
 		Development: {
-			href: "https://dev.sushi.com",
-			target: "_blank",
-			rel: "noopener noreferrer",
+			href: 'https://dev.sushi.com',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
 		SushiGuard: {
-			href: "https://docs.openmev.org",
-			target: "_blank",
-			rel: "noopener noreferrer",
+			href: 'https://docs.openmev.org',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
 	},
 	Items: [
 		{
 			Governance: {
-				"Forum & Proposals": {
-					href: "https://forum.sushi.com",
-					target: "_blank",
-					rel: "noopener noreferrer",
+				'Forum & Proposals': {
+					href: 'https://forum.sushi.com',
+					target: '_blank',
+					rel: 'noopener noreferrer',
 				},
 				Vote: {
-					href: "https://snapshot.org/#/sushigov.eth",
-					target: "_blank",
-					rel: "noopener noreferrer",
+					href: 'https://snapshot.org/#/sushigov.eth',
+					target: '_blank',
+					rel: 'noopener noreferrer',
 				},
 			},
 		},
 		{
 			Partners: {
 				KlimaDAO: {
-					href: "https://www.klimadao.finance/",
-					target: "_blank",
-					rel: "noopener noreferrer",
+					href: 'https://www.klimadao.finance/',
+					target: '_blank',
+					rel: 'noopener noreferrer',
 				},
-				"Manifold Finance": {
-					href: "https://www.manifoldfinance.com/",
-					target: "_blank",
-					rel: "noopener noreferrer",
+				'Manifold Finance': {
+					href: 'https://www.manifoldfinance.com/',
+					target: '_blank',
+					rel: 'noopener noreferrer',
 				},
 			},
 		},
 	],
 	Protocol: {
-		"Apply for Onsen": {
-			href: "https://docs.google.com/document/d/1VcdrqAn1sR8Wa0BSSU-jAl68CfoECR62LCzIyzUpZ_U",
-			target: "_blank",
-			rel: "noopener noreferrer",
+		'Apply for Onsen': {
+			href: 'https://docs.google.com/document/d/1VcdrqAn1sR8Wa0BSSU-jAl68CfoECR62LCzIyzUpZ_U',
+			target: '_blank',
+			rel: 'noopener noreferrer',
 		},
 	},
-};
+}
 
-const Component = ({ children, maxWidth = "5xl", ...props }: FooterProps) => {
+const Component = ({ children, maxWidth = '5xl', ...props }: FooterProps) => {
 	const leafNode = useCallback(
 		(
 			title: string,
@@ -144,10 +144,10 @@ const Component = ({ children, maxWidth = "5xl", ...props }: FooterProps) => {
 						</a>
 					))}
 				</div>
-			);
+			)
 		},
 		[],
-	);
+	)
 
 	return (
 		<footer
@@ -204,13 +204,13 @@ const Component = ({ children, maxWidth = "5xl", ...props }: FooterProps) => {
 								<div key={i} className="flex flex-col gap-6">
 									{items.map((item) =>
 										Object.entries(item).map(([_title, _items]) => {
-											return leafNode(_title, _items);
+											return leafNode(_title, _items)
 										}),
 									)}
 								</div>
-							);
+							)
 						} else {
-							return leafNode(title, items);
+							return leafNode(title, items)
 						}
 					})}
 				</div>
@@ -231,9 +231,9 @@ const Component = ({ children, maxWidth = "5xl", ...props }: FooterProps) => {
 				</div>
 			</Container>
 		</footer>
-	);
-};
+	)
+}
 
 export const GlobalFooter = dynamic(() => Promise.resolve(Component), {
 	ssr: false,
-});
+})

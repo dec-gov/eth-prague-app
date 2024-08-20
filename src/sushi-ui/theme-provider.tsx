@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { ThemeProvider as NextThemeProvider } from "next-themes";
-import { FC, ReactNode } from "react";
+import { ThemeProvider as NextThemeProvider } from 'next-themes'
+import { FC, ReactNode } from 'react'
 
-import { OnramperProvider } from "./components/onramper";
+import { OnramperProvider } from './components/onramper'
 
 interface ThemeProviderProps {
-	children: ReactNode | ReactNode[];
-	forcedTheme?: string;
+	children: ReactNode | ReactNode[]
+	forcedTheme?: string
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
@@ -27,5 +27,5 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
 				<div id="footer-portal" />
 			</OnramperProvider>
 		</NextThemeProvider>
-	);
-};
+	)
+}

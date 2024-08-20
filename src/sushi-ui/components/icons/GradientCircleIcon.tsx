@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const GradientCircleIcon: IconComponent = (props) => {
 	return (
@@ -28,5 +28,5 @@ export const GradientCircleIcon: IconComponent = (props) => {
 				</linearGradient>
 			</defs>
 		</svg>
-	);
-};
+	)
+}

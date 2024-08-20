@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const GasIcon: IconComponent = (props) => (
 	<svg
@@ -14,4 +14,4 @@ export const GasIcon: IconComponent = (props) => (
 			fill="currentColor"
 		/>
 	</svg>
-);
+)

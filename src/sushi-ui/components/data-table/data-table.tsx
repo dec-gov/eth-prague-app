@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
 	ColumnDef,
@@ -19,10 +19,10 @@ import {
 	getPaginationRowModel,
 	getSortedRowModel,
 	useReactTable,
-} from "@tanstack/react-table";
-import { ReactNode, default as React } from "react";
+} from '@tanstack/react-table'
+import { ReactNode, default as React } from 'react'
 
-import classNames from "classnames";
+import classNames from 'classnames'
 import {
 	Table,
 	TableBody,
@@ -31,33 +31,33 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "../table";
-import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTablePagination } from "./data-table-pagination";
+} from '../table'
+import { DataTableColumnHeader } from './data-table-column-header'
+import { DataTablePagination } from './data-table-pagination'
 
-declare module "@tanstack/react-table" {
+declare module '@tanstack/react-table' {
 	// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 	interface ColumnMeta<TData extends RowData, TValue> {
-		className?: string;
-		skeleton?: React.ReactNode;
-		headerDescription?: string;
-		disableLink?: boolean;
+		className?: string
+		skeleton?: React.ReactNode
+		headerDescription?: string
+		disableLink?: boolean
 	}
 }
 
 interface DataTableProps<TData, TValue> {
-	testId?: string | ((value: TData, index: number) => string);
-	columns: ColumnDef<TData, TValue>[];
-	data: TData[];
-	toolbar?: (table: TableType<TData>) => ReactNode;
-	pagination?: boolean;
-	loading: boolean;
-	linkFormatter?: (value: TData) => string;
-	externalLink?: boolean;
-	state?: Partial<TableState>;
-	onSortingChange?: OnChangeFn<SortingState>;
-	onPaginationChange?: OnChangeFn<PaginationState>;
-	rowRenderer?: (row: Row<TData>, value: ReactNode) => ReactNode;
+	testId?: string | ((value: TData, index: number) => string)
+	columns: ColumnDef<TData, TValue>[]
+	data: TData[]
+	toolbar?: (table: TableType<TData>) => ReactNode
+	pagination?: boolean
+	loading: boolean
+	linkFormatter?: (value: TData) => string
+	externalLink?: boolean
+	state?: Partial<TableState>
+	onSortingChange?: OnChangeFn<SortingState>
+	onPaginationChange?: OnChangeFn<PaginationState>
+	rowRenderer?: (row: Row<TData>, value: ReactNode) => ReactNode
 }
 
 export function DataTable<TData, TValue>({
@@ -74,13 +74,13 @@ export function DataTable<TData, TValue>({
 	onPaginationChange,
 	rowRenderer,
 }: DataTableProps<TData, TValue>) {
-	const [rowSelection, setRowSelection] = React.useState({});
+	const [rowSelection, setRowSelection] = React.useState({})
 	const [columnVisibility, setColumnVisibility] =
-		React.useState<VisibilityState>({});
+		React.useState<VisibilityState>({})
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
 		[],
-	);
-	const [sorting, setSorting] = React.useState<SortingState>([]);
+	)
+	const [sorting, setSorting] = React.useState<SortingState>([])
 
 	const table = useReactTable({
 		data,
@@ -107,12 +107,12 @@ export function DataTable<TData, TValue>({
 		getSortedRowModel: getSortedRowModel(),
 		getFacetedRowModel: getFacetedRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
-	});
+	})
 
 	return (
 		<div className="space-y-4 border-t border-secondary">
 			{toolbar ? toolbar(table) : null}
-			<Table className={pagination ? "border-b border-secondary" : ""}>
+			<Table className={pagination ? 'border-b border-secondary' : ''}>
 				<TableHeader>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
@@ -122,7 +122,7 @@ export function DataTable<TData, TValue>({
 										style={{ width: header.getSize() }}
 										key={header.id}
 										className={classNames(
-											header.column.getCanSort() ? "px-2" : "px-4",
+											header.column.getCanSort() ? 'px-2' : 'px-4',
 										)}
 									>
 										{header.isPlaceholder ? null : (
@@ -135,7 +135,7 @@ export function DataTable<TData, TValue>({
 											/>
 										)}
 									</TableHead>
-								);
+								)
 							})}
 						</TableRow>
 					))}
@@ -154,7 +154,7 @@ export function DataTable<TData, TValue>({
 											>
 												{column.columnDef.meta?.skeleton}
 											</TableCell>
-										);
+										)
 									})}
 								</TableRow>
 							))
@@ -163,9 +163,9 @@ export function DataTable<TData, TValue>({
 							const _row = (
 								<TableRow
 									key={r}
-									data-state={row.getIsSelected() && "selected"}
+									data-state={row.getIsSelected() && 'selected'}
 									testdata-id={
-										typeof testId === "function"
+										typeof testId === 'function'
 											? testId(row.original, r)
 											: `${testId}-${r}-tr`
 									}
@@ -199,10 +199,10 @@ export function DataTable<TData, TValue>({
 										),
 									)}
 								</TableRow>
-							);
+							)
 
-							if (rowRenderer) return rowRenderer(row, _row);
-							return _row;
+							if (rowRenderer) return rowRenderer(row, _row)
+							return _row
 						})
 					) : (
 						<TableRow>
@@ -223,5 +223,5 @@ export function DataTable<TData, TValue>({
 				</div>
 			) : null}
 		</div>
-	);
+	)
 }

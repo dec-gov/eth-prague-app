@@ -1,23 +1,23 @@
-"use client";
+'use client'
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import React, {
 	ReactNode,
 	useCallback,
 	useLayoutEffect,
 	useRef,
 	useState,
-} from "react";
+} from 'react'
 
-import classNames from "classnames";
+import classNames from 'classnames'
 
 interface CarouselProps<T> {
-	defaultSlide?: number;
-	slideWidth?: number;
-	slides: T[];
-	render(slide: T, i: number): ReactNode;
-	containerWidth?: number;
-	className?: string;
+	defaultSlide?: number
+	slideWidth?: number
+	slides: T[]
+	render(slide: T, i: number): ReactNode
+	containerWidth?: number
+	className?: string
 }
 
 export const Carousel = <T,>({
@@ -31,34 +31,34 @@ export const Carousel = <T,>({
 	const [buttons, setButtons] = useState({
 		hasNext: slides.length > 1,
 		hasPrev: false,
-	});
+	})
 
-	const container = useRef<HTMLDivElement | null>(null);
-	const ref = useRef<HTMLDivElement | null>(null);
+	const container = useRef<HTMLDivElement | null>(null)
+	const ref = useRef<HTMLDivElement | null>(null)
 
 	const prev = useCallback(() => {
 		requestAnimationFrame(() => {
 			if (ref.current) {
-				const scrollLeft = ref.current.scrollLeft;
-				ref.current.scrollLeft = scrollLeft - slideWidth;
+				const scrollLeft = ref.current.scrollLeft
+				ref.current.scrollLeft = scrollLeft - slideWidth
 			}
-		});
+		})
 
 		if (ref.current) {
 			setButtons({
 				hasNext: true,
 				hasPrev: ref.current?.scrollLeft - slideWidth > 20,
-			});
+			})
 		}
-	}, [slideWidth]);
+	}, [slideWidth])
 
 	const next = useCallback(() => {
 		requestAnimationFrame(() => {
 			if (ref.current) {
-				const scrollLeft = ref.current.scrollLeft;
-				ref.current.scrollLeft = scrollLeft + slideWidth;
+				const scrollLeft = ref.current.scrollLeft
+				ref.current.scrollLeft = scrollLeft + slideWidth
 			}
-		});
+		})
 
 		if (ref.current && container.current) {
 			setButtons({
@@ -66,18 +66,18 @@ export const Carousel = <T,>({
 					ref.current?.scrollWidth - ref.current?.scrollLeft - slideWidth >
 					container.current?.clientWidth,
 				hasPrev: true,
-			});
+			})
 		}
-	}, [slideWidth]);
+	}, [slideWidth])
 
 	useLayoutEffect(() => {
 		if (defaultSlide > 0) {
 			requestAnimationFrame(() => {
 				if (ref.current) {
-					const scrollLeft = ref.current.scrollLeft;
-					ref.current.scrollLeft = scrollLeft + slideWidth * (defaultSlide - 1);
+					const scrollLeft = ref.current.scrollLeft
+					ref.current.scrollLeft = scrollLeft + slideWidth * (defaultSlide - 1)
 				}
-			});
+			})
 
 			if (ref.current && container.current) {
 				setButtons({
@@ -87,10 +87,10 @@ export const Carousel = <T,>({
 							slideWidth * (defaultSlide - 1) >
 						container.current?.clientWidth,
 					hasPrev: true,
-				});
+				})
 			}
 		}
-	}, [defaultSlide, slideWidth]);
+	}, [defaultSlide, slideWidth])
 
 	return (
 		<div className="relative group">
@@ -100,14 +100,14 @@ export const Carousel = <T,>({
 					className="relative overflow-x-scroll overflow-x-contain whitespace-nowrap snap-x hide-scrollbar scroll-smooth pt-4 pb-10"
 				>
 					<div
-						className={classNames(className, "w-full align-top inline-flex")}
+						className={classNames(className, 'w-full align-top inline-flex')}
 					>
 						{slides.map((el, i) => (
 							<div key={i} className="inline-block snap-start">
 								<div
 									className={classNames(
-										i === 0 ? "ml-0" : i === slides.length - 1 ? "pr-4" : "",
-										"flex mr-5 h-full",
+										i === 0 ? 'ml-0' : i === slides.length - 1 ? 'pr-4' : '',
+										'flex mr-5 h-full',
 									)}
 									style={{
 										transform: `translateX(calc(max(${containerWidth}px, 100vw)/2 - ${
@@ -128,8 +128,8 @@ export const Carousel = <T,>({
 					<button
 						type="button"
 						onClick={(e) => {
-							e.stopPropagation();
-							prev();
+							e.stopPropagation()
+							prev()
 						}}
 						className="shadow-md hover:border-accent border border-transparent p-3 rounded-full cursor-pointer bg-gray-200 dark:bg-slate-700"
 					>
@@ -142,8 +142,8 @@ export const Carousel = <T,>({
 					<button
 						type="button"
 						onClick={(e) => {
-							e.stopPropagation();
-							next();
+							e.stopPropagation()
+							next()
 						}}
 						className="shadow-md hover:border-accent border border-transparent p-3 rounded-full cursor-pointer bg-gray-200 dark:bg-slate-700"
 					>
@@ -152,5 +152,5 @@ export const Carousel = <T,>({
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}

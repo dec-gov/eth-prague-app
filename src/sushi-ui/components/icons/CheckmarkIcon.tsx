@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
-import { classNames } from "../../index";
-import { IconComponent } from "../../types";
+import { classNames } from '../../index'
+import { IconComponent } from '../../types'
 
 export const CheckMarkIcon: IconComponent = (props) => {
 	return (
@@ -14,7 +14,7 @@ export const CheckMarkIcon: IconComponent = (props) => {
 			<circle
 				fillOpacity="0"
 				className={classNames(
-					"circle animate-grow origin-center text-green",
+					'circle animate-grow origin-center text-green',
 					props.className,
 				)}
 				stroke="currentColor"
@@ -36,8 +36,8 @@ export const CheckMarkIcon: IconComponent = (props) => {
 				strokeLinejoin="round"
 				strokeMiterlimit="10"
 				d="M14 27l5.917 4.917L34 17"
-				style={{ animationDelay: "600ms" }}
+				style={{ animationDelay: '600ms' }}
 			/>
 		</svg>
-	);
-};
+	)
+}

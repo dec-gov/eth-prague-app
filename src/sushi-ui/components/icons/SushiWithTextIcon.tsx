@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const SushiWithTextIcon: IconComponent = (props) => {
 	return (
@@ -49,5 +49,5 @@ export const SushiWithTextIcon: IconComponent = (props) => {
 				</linearGradient>
 			</defs>
 		</svg>
-	);
-};
+	)
+}

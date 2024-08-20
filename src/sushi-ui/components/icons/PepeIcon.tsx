@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const PepeIcon: IconComponent = (props) => {
 	return (
@@ -50,5 +50,5 @@ export const PepeIcon: IconComponent = (props) => {
 				/>
 			</defs>
 		</svg>
-	);
-};
+	)
+}

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const MetamaskIcon: IconComponent = (props) => {
 	return (
@@ -125,5 +125,5 @@ export const MetamaskIcon: IconComponent = (props) => {
 				</g>
 			</g>
 		</svg>
-	);
-};
+	)
+}

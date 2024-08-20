@@ -1,27 +1,27 @@
-"use client";
+'use client'
 
 import {
 	CaretDownIcon,
 	CaretSortIcon,
 	CaretUpIcon,
-} from "@radix-ui/react-icons";
-import { Column } from "@tanstack/react-table";
-import { useCallback } from "react";
+} from '@radix-ui/react-icons'
+import { Column } from '@tanstack/react-table'
+import { useCallback } from 'react'
 
-import classNames from "classnames";
-import { Button } from "../button";
+import classNames from 'classnames'
+import { Button } from '../button'
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "../tooltip";
+} from '../tooltip'
 
 interface DataTableColumnHeaderProps<TData, TValue>
 	extends React.HTMLAttributes<HTMLDivElement> {
-	column: Column<TData, TValue>;
-	title: string;
-	description?: string;
+	column: Column<TData, TValue>
+	title: string
+	description?: string
 }
 
 export function DataTableColumnHeader<TData, TValue>({
@@ -33,23 +33,23 @@ export function DataTableColumnHeader<TData, TValue>({
 	const onClick = useCallback(() => {
 		if (column.getIsSorted() === false) {
 			// desc
-			column.toggleSorting(true);
+			column.toggleSorting(true)
 		}
 
-		if (column.getIsSorted() === "desc") {
+		if (column.getIsSorted() === 'desc') {
 			// asc
-			column.toggleSorting(false);
+			column.toggleSorting(false)
 		}
 
-		if (column.getIsSorted() === "asc") {
+		if (column.getIsSorted() === 'asc') {
 			// clear
-			column.clearSorting();
+			column.clearSorting()
 		}
-	}, [column]);
+	}, [column])
 
 	// When the header (=title) is undefined, it becomes a function, can't render functions...
-	if (typeof title !== "string") {
-		title = "";
+	if (typeof title !== 'string') {
+		title = ''
 	}
 
 	if (!column.getCanSort()) {
@@ -70,11 +70,11 @@ export function DataTableColumnHeader<TData, TValue>({
 					<span>{title}</span>
 				)}
 			</div>
-		);
+		)
 	}
 
 	return (
-		<div className={classNames("flex items-center space-x-2", className)}>
+		<div className={classNames('flex items-center space-x-2', className)}>
 			{description ? (
 				<Button onClick={onClick} variant="ghost" size="xs">
 					<TooltipProvider>
@@ -84,9 +84,9 @@ export function DataTableColumnHeader<TData, TValue>({
 									<span className="underline decoration-dotted underline-offset-2">
 										{title}
 									</span>
-									{column.getIsSorted() === "desc" ? (
+									{column.getIsSorted() === 'desc' ? (
 										<CaretDownIcon className="ml-2 h-4 w-4" />
-									) : column.getIsSorted() === "asc" ? (
+									) : column.getIsSorted() === 'asc' ? (
 										<CaretUpIcon className="ml-2 h-4 w-4" />
 									) : (
 										<CaretSortIcon className="ml-2 h-4 w-4" />
@@ -100,9 +100,9 @@ export function DataTableColumnHeader<TData, TValue>({
 			) : (
 				<Button onClick={onClick} variant="ghost" size="xs">
 					<span>{title}</span>
-					{column.getIsSorted() === "desc" ? (
+					{column.getIsSorted() === 'desc' ? (
 						<CaretDownIcon className="ml-2 h-4 w-4" />
-					) : column.getIsSorted() === "asc" ? (
+					) : column.getIsSorted() === 'asc' ? (
 						<CaretUpIcon className="ml-2 h-4 w-4" />
 					) : (
 						<CaretSortIcon className="ml-2 h-4 w-4" />
@@ -110,5 +110,5 @@ export function DataTableColumnHeader<TData, TValue>({
 				</Button>
 			)}
 		</div>
-	);
+	)
 }

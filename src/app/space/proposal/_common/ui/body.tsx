@@ -1,3 +1,3 @@
 export function Body({ content }: { content: string }) {
-	return <div className="prose prose-invert">{content}</div>;
+	return <div className="prose prose-invert">{content}</div>
 }

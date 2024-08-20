@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const NotepadIcon: IconComponent = (props) => {
 	return (
@@ -53,5 +53,5 @@ export const NotepadIcon: IconComponent = (props) => {
 				strokeLinejoin="round"
 			/>
 		</svg>
-	);
-};
+	)
+}

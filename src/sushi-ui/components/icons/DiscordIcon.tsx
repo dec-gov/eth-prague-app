@@ -1,4 +1,4 @@
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const DiscordIcon: IconComponent = (props) => {
 	return (
@@ -17,5 +17,5 @@ export const DiscordIcon: IconComponent = (props) => {
 				/>
 			</g>
 		</svg>
-	);
-};
+	)
+}

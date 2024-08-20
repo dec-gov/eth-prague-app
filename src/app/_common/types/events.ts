@@ -1,45 +1,45 @@
-import * as z from "zod";
+import * as z from 'zod'
 
 export enum EventType {
-	ON_PROPOSAL_CREATED = "ON_PROPOSAL_CREATED",
-	ON_PROPOSAL_ENDED = "ON_PROPOSAL_ENDED",
-	ON_VOTE = "ON_VOTE",
+	ON_PROPOSAL_CREATED = 'ON_PROPOSAL_CREATED',
+	ON_PROPOSAL_ENDED = 'ON_PROPOSAL_ENDED',
+	ON_VOTE = 'ON_VOTE',
 }
 
 export const eventSchema = z.object({
 	id: z.number(),
 	eventType: z.number().transform((x) => {
-		if (x === 0) return EventType.ON_PROPOSAL_CREATED;
-		if (x === 1) return EventType.ON_PROPOSAL_ENDED;
-		if (x === 2) return EventType.ON_VOTE;
-		return EventType.ON_PROPOSAL_CREATED;
+		if (x === 0) return EventType.ON_PROPOSAL_CREATED
+		if (x === 1) return EventType.ON_PROPOSAL_ENDED
+		if (x === 2) return EventType.ON_VOTE
+		return EventType.ON_PROPOSAL_CREATED
 	}),
 	spaceId: z.number().int(),
 	webhookUrl: z.string().url(),
 	payload: z.string(),
-});
+})
 
-export type Event = z.infer<typeof eventSchema>;
+export type Event = z.infer<typeof eventSchema>
 
 export const dummyEvents: Event[] = [
 	{
 		id: 0,
 		eventType: EventType.ON_PROPOSAL_CREATED,
-		webhookUrl: "http://localhost:3000",
-		payload: "proposal created",
+		webhookUrl: 'http://localhost:3000',
+		payload: 'proposal created',
 		spaceId: 0,
 	},
 	{
 		id: 1,
 		eventType: EventType.ON_PROPOSAL_ENDED,
-		webhookUrl: "http://localhost:3000",
-		payload: "proposal ended",
+		webhookUrl: 'http://localhost:3000',
+		payload: 'proposal ended',
 		spaceId: 0,
 	},
 	{
 		id: 2,
 		eventType: EventType.ON_VOTE,
-		webhookUrl: "http://localhost:3000",
+		webhookUrl: 'http://localhost:3000',
 		payload: `{
       "content": "asjdashuidasoihdasuioijawd",
       "embeds": [
@@ -76,4 +76,4 @@ export const dummyEvents: Event[] = [
     }`,
 		spaceId: 0,
 	},
-];
+]

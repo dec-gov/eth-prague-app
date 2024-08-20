@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { AnchorHTMLAttributes, FC } from "react";
+import Link from 'next/link'
+import { AnchorHTMLAttributes, FC } from 'react'
 
-const LinkInternal = Link;
+const LinkInternal = Link
 const LinkExternal: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
-	target = "_blank",
-	rel = "noopener noreferrer",
+	target = '_blank',
+	rel = 'noopener noreferrer',
 	...props
 }) => {
 	return (
@@ -14,7 +14,7 @@ const LinkExternal: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
 			rel={rel}
 			className="cursor-pointer text-blue hover:underline"
 		/>
-	);
-};
+	)
+}
 
-export { LinkExternal, LinkInternal };
+export { LinkExternal, LinkInternal }

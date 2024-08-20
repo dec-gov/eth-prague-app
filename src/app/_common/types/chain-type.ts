@@ -1,4 +1,4 @@
 export enum ChainType {
-	EVM = "EVM",
-	BTC = "BTC",
+	EVM = 'EVM',
+	BTC = 'BTC',
 }

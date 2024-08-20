@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from 'zod'
 
 export enum MinProposalCreator {
 	ADMIN = 0,
@@ -31,16 +31,16 @@ export const spaceSchema = z
 		minProposalCreator: space.minVoteRole,
 		minProposalCreatorPower: BigInt(Math.floor(space.minVotePower)),
 		quorum: BigInt(space.quorum),
-	}));
+	}))
 
-export type Space = z.infer<typeof spaceSchema>;
+export type Space = z.infer<typeof spaceSchema>
 
 export const dummySpaces: Space[] = [
 	{
 		id: 0,
-		name: "AAVE",
-		iconLink: "https://cryptologos.cc/logos/aave-aave-logo.png",
-		websiteLink: "https://aave.com",
+		name: 'AAVE',
+		iconLink: 'https://cryptologos.cc/logos/aave-aave-logo.png',
+		websiteLink: 'https://aave.com',
 		minProposalCreator: MinProposalCreator.ADMIN,
 		minProposalCreatorPower: 0n,
 		voteDelay: 0,
@@ -49,9 +49,9 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 1,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
@@ -60,9 +60,9 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 2,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
@@ -71,9 +71,9 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 3,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
@@ -82,9 +82,9 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 4,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
@@ -93,9 +93,9 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 5,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
@@ -104,9 +104,9 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 6,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
@@ -115,13 +115,13 @@ export const dummySpaces: Space[] = [
 	},
 	{
 		id: 7,
-		name: "Compound",
-		iconLink: "https://cryptologos.cc/logos/compound-comp-logo.png",
-		websiteLink: "https://compound.finance",
+		name: 'Compound',
+		iconLink: 'https://cryptologos.cc/logos/compound-comp-logo.png',
+		websiteLink: 'https://compound.finance',
 		minProposalCreator: MinProposalCreator.ANYONE,
 		minProposalCreatorPower: 100n,
 		voteDelay: 0,
 		voteDuration: 172800,
 		quorum: 0n,
 	},
-];
+]

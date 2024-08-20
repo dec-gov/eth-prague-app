@@ -1,33 +1,33 @@
-import { type VariantProps, cva } from "class-variance-authority";
-import classNames from "classnames";
-import React from "react";
+import { type VariantProps, cva } from 'class-variance-authority'
+import classNames from 'classnames'
+import React from 'react'
 
-import { Container } from "./container";
+import { Container } from './container'
 
-const widgetVariants = cva("flex flex-col relative overflow-hidden", {
+const widgetVariants = cva('flex flex-col relative overflow-hidden', {
 	variants: {
 		variant: {
 			default:
-				"mx-auto p-6 dark:shadow dark:shadow-slate-900 bg-white dark:bg-slate-800",
-			empty: "",
+				'mx-auto p-6 dark:shadow dark:shadow-slate-900 bg-white dark:bg-slate-800',
+			empty: '',
 		},
 	},
 	defaultVariants: {
-		variant: "default",
+		variant: 'default',
 	},
-});
+})
 
-const widgetActionVariants = cva("absolute", {
+const widgetActionVariants = cva('absolute', {
 	variants: {
 		variant: {
-			default: "top-6 right-6",
-			empty: "top-0 right-0",
+			default: 'top-6 right-6',
+			empty: 'top-0 right-0',
 		},
 	},
 	defaultVariants: {
-		variant: "default",
+		variant: 'default',
 	},
-});
+})
 
 export interface WidgetProps
 	extends React.ButtonHTMLAttributes<HTMLDivElement>,
@@ -42,11 +42,11 @@ const Widget = React.forwardRef<HTMLDivElement, WidgetProps>(
 				className={widgetVariants({ variant, className })}
 				{...props}
 			/>
-		);
+		)
 	},
-);
+)
 
-Widget.displayName = "WidgetRoot";
+Widget.displayName = 'WidgetRoot'
 
 const WidgetHeader = ({
 	className,
@@ -54,13 +54,13 @@ const WidgetHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={classNames(
-			"flex flex-col space-y-1.5 text-left mb-4",
+			'flex flex-col space-y-1.5 text-left mb-4',
 			className,
 		)}
 		{...props}
 	/>
-);
-WidgetHeader.displayName = "WidgetHeader";
+)
+WidgetHeader.displayName = 'WidgetHeader'
 
 const WidgetTitle = ({
 	className,
@@ -68,24 +68,24 @@ const WidgetTitle = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={classNames(
-			"text-lg font-semibold leading-none tracking-tight mr-[64px]",
+			'text-lg font-semibold leading-none tracking-tight mr-[64px]',
 			className,
 		)}
 		{...props}
 	/>
-);
-WidgetTitle.displayName = "WidgetTitle";
+)
+WidgetTitle.displayName = 'WidgetTitle'
 
 const WidgetDescription = ({
 	className,
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={classNames("text-sm text-muted-foreground mr-[64px]", className)}
+		className={classNames('text-sm text-muted-foreground mr-[64px]', className)}
 		{...props}
 	/>
-);
-WidgetDescription.displayName = "WidgetDescription";
+)
+WidgetDescription.displayName = 'WidgetDescription'
 
 export interface WidgetActionProps
 	extends React.ButtonHTMLAttributes<HTMLDivElement>,
@@ -93,8 +93,8 @@ export interface WidgetActionProps
 
 const WidgetAction = ({ variant, className, ...props }: WidgetActionProps) => (
 	<div className={widgetActionVariants({ variant, className })} {...props} />
-);
-WidgetAction.displayName = "WidgetAction";
+)
+WidgetAction.displayName = 'WidgetAction'
 
 const WidgetFooter = ({
 	className,
@@ -102,13 +102,13 @@ const WidgetFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={classNames(
-			"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 mt-4",
+			'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 mt-4',
 			className,
 		)}
 		{...props}
 	/>
-);
-WidgetFooter.displayName = "WidgetFooter";
+)
+WidgetFooter.displayName = 'WidgetFooter'
 
 export {
 	Widget,
@@ -117,4 +117,4 @@ export {
 	WidgetFooter,
 	WidgetHeader,
 	WidgetTitle,
-};
+}

@@ -1,45 +1,45 @@
-"use client";
+'use client'
 
-import { Transition } from "@headlessui/react";
-import { ArrowSmallRightIcon } from "@heroicons/react/20/solid";
-import classNames from "classnames";
-import React, { Fragment, ReactNode, useState } from "react";
+import { Transition } from '@headlessui/react'
+import { ArrowSmallRightIcon } from '@heroicons/react/20/solid'
+import classNames from 'classnames'
+import React, { Fragment, ReactNode, useState } from 'react'
 
 import {
 	ExtractProps,
 	IconComponent,
 	PolymorphicComponentProps,
-} from "../../types";
+} from '../../types'
 
 interface Props {
-	disabled?: boolean;
-	title: ReactNode;
-	subtitle?: ReactNode;
-	hoverIcon?: IconComponent;
-	hoverIconProps?: Omit<React.ComponentProps<"svg">, "width" | "height"> & {
-		width: number;
-		height: number;
-	};
+	disabled?: boolean
+	title: ReactNode
+	subtitle?: ReactNode
+	hoverIcon?: IconComponent
+	hoverIconProps?: Omit<React.ComponentProps<'svg'>, 'width' | 'height'> & {
+		width: number
+		height: number
+	}
 }
 
 export type ListMenuItemProps<
 	P extends React.ElementType,
 	C extends React.ElementType,
 > = {
-	icon?: P;
+	icon?: P
 	iconProps?: ExtractProps<P> & {
-		width?: number;
-		height?: number;
-		className?: string;
-	};
-} & PolymorphicComponentProps<C, Props>;
+		width?: number
+		height?: number
+		className?: string
+	}
+} & PolymorphicComponentProps<C, Props>
 
 export type ListMenuItemComponent = <
-	P extends React.ElementType = "svg",
-	C extends React.ElementType = "button",
+	P extends React.ElementType = 'svg',
+	C extends React.ElementType = 'button',
 >(
 	props: ListMenuItemProps<P, C>,
-) => React.ReactElement | null;
+) => React.ReactElement | null
 
 export const ListMenuItem: ListMenuItemComponent = ({
 	as,
@@ -54,9 +54,9 @@ export const ListMenuItem: ListMenuItemComponent = ({
 	disabled = false,
 	...rest
 }) => {
-	const Component = as || "button";
+	const Component = as || 'button'
 
-	const [hover, setHover] = useState(false);
+	const [hover, setHover] = useState(false)
 	return (
 		<Component
 			{...rest}
@@ -66,9 +66,9 @@ export const ListMenuItem: ListMenuItemComponent = ({
 			onClick={onClick}
 			className={classNames(
 				className,
-				disabled ? "opacity-40 !pointer-events-none cursor-default" : "",
-				subtitle ? "items-start" : "items-center",
-				"hover:bg-muted relative flex gap-4 px-3 py-3 w-full cursor-pointer rounded-xl",
+				disabled ? 'opacity-40 !pointer-events-none cursor-default' : '',
+				subtitle ? 'items-start' : 'items-center',
+				'hover:bg-muted relative flex gap-4 px-3 py-3 w-full cursor-pointer rounded-xl',
 			)}
 		>
 			{Icon && (
@@ -84,7 +84,7 @@ export const ListMenuItem: ListMenuItemComponent = ({
 						width: 18,
 						height: 18,
 						strokeWidth: 2,
-						className: classNames(iconProps?.className, "text-blue-500"),
+						className: classNames(iconProps?.className, 'text-blue-500'),
 					})}
 				</div>
 			)}
@@ -123,11 +123,11 @@ export const ListMenuItem: ListMenuItemComponent = ({
 							height={hoverIconProps?.height ?? 24}
 							strokeWidth={hoverIconProps?.strokeWidth ?? 5}
 							fill="currentColor"
-							className={classNames(hoverIconProps?.className, "!text-blue")}
+							className={classNames(hoverIconProps?.className, '!text-blue')}
 						/>
 					)}
 				</div>
 			</Transition>
 		</Component>
-	);
-};
+	)
+}

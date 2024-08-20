@@ -1,19 +1,19 @@
-"use client";
+'use client'
 
-import { type VariantProps } from "class-variance-authority";
-import { FC, useState } from "react";
+import { type VariantProps } from 'class-variance-authority'
+import { FC, useState } from 'react'
 import {
 	ReactDatePickerProps,
 	default as ReactDatePicker,
-} from "react-datepicker";
+} from 'react-datepicker'
 
-import { CalendarIcon } from "./icons";
-import { textFieldVariants } from "./text-field";
+import { CalendarIcon } from './icons'
+import { textFieldVariants } from './text-field'
 
 interface DateFieldProps
 	extends ReactDatePickerProps,
 		VariantProps<typeof textFieldVariants> {
-	testId?: string;
+	testId?: string
 }
 
 const DateField: FC<DateFieldProps> = ({
@@ -22,7 +22,7 @@ const DateField: FC<DateFieldProps> = ({
 	variant,
 	...props
 }) => {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false)
 
 	return (
 		<div className="relative w-full">
@@ -40,7 +40,7 @@ const DateField: FC<DateFieldProps> = ({
 				}
 				{...props}
 			/>
-			{variant !== "naked" ? (
+			{variant !== 'naked' ? (
 				<div
 					role="button"
 					onClick={() => setOpen((open) => !open)}
@@ -55,7 +55,7 @@ const DateField: FC<DateFieldProps> = ({
 				</div>
 			) : null}
 		</div>
-	);
-};
+	)
+}
 
-export { DateField };
+export { DateField }

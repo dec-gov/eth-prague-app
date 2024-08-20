@@ -1,16 +1,16 @@
-import classNames from "classnames";
-import { FC } from "react";
-import ReactDropzone, { DropzoneProps } from "react-dropzone";
+import classNames from 'classnames'
+import { FC } from 'react'
+import ReactDropzone, { DropzoneProps } from 'react-dropzone'
 
 interface Dropzone extends DropzoneProps {
-	label?: string;
+	label?: string
 }
 
 /**
  * @deprecated
  */
 export const Dropzone: FC<Dropzone> = ({
-	label = "Select a CSV file to upload",
+	label = 'Select a CSV file to upload',
 	onDrop,
 	...rest
 }) => {
@@ -22,11 +22,11 @@ export const Dropzone: FC<Dropzone> = ({
 						{...getRootProps()}
 						className={classNames(
 							isDragReject
-								? "bg-red-500 bg-opacity-[0.15] border-red"
+								? 'bg-red-500 bg-opacity-[0.15] border-red'
 								: isDragActive
-								  ? "bg-blue-500 bg-opacity-[0.15] border-blue"
-								  : "dark:bg-white/[0.04] bg-black/[0.04] border-gray-300 dark:border-slate-700",
-							"border-dashed border-2 rounded-2xl py-6 flex justify-center",
+								  ? 'bg-blue-500 bg-opacity-[0.15] border-blue'
+								  : 'dark:bg-white/[0.04] bg-black/[0.04] border-gray-300 dark:border-slate-700',
+							'border-dashed border-2 rounded-2xl py-6 flex justify-center',
 						)}
 					>
 						<div className="space-y-3 text-center flex flex-col items-center justify-center">
@@ -59,10 +59,10 @@ export const Dropzone: FC<Dropzone> = ({
 									fill="currentColor"
 									className={
 										isDragReject
-											? "text-red"
+											? 'text-red'
 											: isDragActive
-											  ? "text-blue"
-											  : "text-slate-600"
+											  ? 'text-blue'
+											  : 'text-slate-600'
 									}
 								/>
 								<path
@@ -76,11 +76,11 @@ export const Dropzone: FC<Dropzone> = ({
 								<span
 									className={classNames(
 										isDragReject
-											? "text-red hover:text-red-400"
+											? 'text-red hover:text-red-400'
 											: isDragActive
-											  ? "text-blue hover:text-blue-400"
-											  : "text-gray-900 dark:text-slate-200",
-										"flex flex-col gap-1 outline-none relative cursor-pointer rounded-md font-medium hover:purple focus-within:outline-none",
+											  ? 'text-blue hover:text-blue-400'
+											  : 'text-gray-900 dark:text-slate-200',
+										'flex flex-col gap-1 outline-none relative cursor-pointer rounded-md font-medium hover:purple focus-within:outline-none',
 									)}
 								>
 									<label
@@ -92,11 +92,11 @@ export const Dropzone: FC<Dropzone> = ({
 									<p
 										className={classNames(
 											isDragReject
-												? "text-red-200"
+												? 'text-red-200'
 												: isDragActive
-												  ? "text-blue-200"
-												  : "text-gray-500 dark:text-slate-500",
-											"text-xs",
+												  ? 'text-blue-200'
+												  : 'text-gray-500 dark:text-slate-500',
+											'text-xs',
 										)}
 									>
 										or drag and drop it here
@@ -112,8 +112,8 @@ export const Dropzone: FC<Dropzone> = ({
 							</div>
 						</div>
 					</div>
-				);
+				)
 			}}
 		</ReactDropzone>
-	);
-};
+	)
+}

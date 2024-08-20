@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { IconComponent } from "../../types";
+import { IconComponent } from '../../types'
 
 export const HistoryIcon: IconComponent = (props) => {
 	return (
@@ -39,5 +39,5 @@ export const HistoryIcon: IconComponent = (props) => {
 				strokeLinejoin="round"
 			/>
 		</svg>
-	);
-};
+	)
+}

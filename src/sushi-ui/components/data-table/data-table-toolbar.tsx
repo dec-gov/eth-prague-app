@@ -1,23 +1,23 @@
-"use client";
+'use client'
 
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { Cross2Icon } from "@radix-ui/react-icons";
-import { Table } from "@tanstack/react-table";
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
+import { Cross2Icon } from '@radix-ui/react-icons'
+import { Table } from '@tanstack/react-table'
 
-import { Button } from "../button";
-import { TextField } from "../text-field";
-import { DataTableViewOptions } from "./data-table-view-options";
+import { Button } from '../button'
+import { TextField } from '../text-field'
+import { DataTableViewOptions } from './data-table-view-options'
 
 interface DataTableToolbarProps<TData> {
-	table: Table<TData>;
-	children: React.ReactNode;
+	table: Table<TData>
+	children: React.ReactNode
 }
 
 export function DataTableToolbar<TData>({
 	table,
 	children,
 }: DataTableToolbarProps<TData>) {
-	const isFiltered = table.getState().columnFilters.length > 0;
+	const isFiltered = table.getState().columnFilters.length > 0
 
 	return (
 		<div className="flex items-center justify-between gap-4">
@@ -26,9 +26,9 @@ export function DataTableToolbar<TData>({
 					icon={MagnifyingGlassIcon}
 					type="text"
 					placeholder="Filter tasks..."
-					value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+					value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
 					onChange={(event) =>
-						table.getColumn("title")?.setFilterValue(event.target.value)
+						table.getColumn('title')?.setFilterValue(event.target.value)
 					}
 				/>
 				{children}
@@ -45,5 +45,5 @@ export function DataTableToolbar<TData>({
 			</div>
 			<DataTableViewOptions table={table} />
 		</div>
-	);
+	)
 }

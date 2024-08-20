@@ -1,25 +1,25 @@
-import classNames from "classnames";
-import React, { FC, ReactNode } from "react";
+import classNames from 'classnames'
+import React, { FC, ReactNode } from 'react'
 
-import { SkeletonText } from "../skeleton";
+import { SkeletonText } from '../skeleton'
 
 export type ListKeyValueProps =
 	| {
-			title: ReactNode;
-			subtitle?: string;
-			children: ReactNode;
-			skeleton?: never;
-			flex?: boolean;
-			className?: string;
+			title: ReactNode
+			subtitle?: string
+			children: ReactNode
+			skeleton?: never
+			flex?: boolean
+			className?: string
 	  }
 	| {
-			title?: never;
-			subtitle?: boolean;
-			children?: never;
-			skeleton?: boolean;
-			flex?: boolean;
-			className?: string;
-	  };
+			title?: never
+			subtitle?: boolean
+			children?: never
+			skeleton?: boolean
+			flex?: boolean
+			className?: string
+	  }
 
 export const ListKeyValue: FC<ListKeyValueProps> = ({
 	title,
@@ -27,7 +27,7 @@ export const ListKeyValue: FC<ListKeyValueProps> = ({
 	children,
 	skeleton,
 	flex = false,
-	className = "",
+	className = '',
 }) => {
 	if (skeleton) {
 		return (
@@ -40,15 +40,15 @@ export const ListKeyValue: FC<ListKeyValueProps> = ({
 					<SkeletonText fontSize="sm" />
 				</div>
 			</div>
-		);
+		)
 	}
 
 	return (
 		<div
 			className={classNames(
 				className,
-				flex ? "flex justify-between items-center" : "grid grid-cols-2",
-				"gap-2 py-3 px-3 rounded-lg",
+				flex ? 'flex justify-between items-center' : 'grid grid-cols-2',
+				'gap-2 py-3 px-3 rounded-lg',
 			)}
 		>
 			<div className="flex flex-col gap-0.5">
@@ -61,5 +61,5 @@ export const ListKeyValue: FC<ListKeyValueProps> = ({
 				{children}
 			</div>
 		</div>
-	);
-};
+	)
+}

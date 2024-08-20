@@ -1,17 +1,22 @@
-import Link from "next/link";
+import Link from 'next/link'
 import {
 	Proposal,
 	Space,
-} from "~/app/_common/lib/declarations/decgov_backend.did";
-import { Button } from "~/sushi-ui";
-import { Card, CardContent, CardHeader } from "~/sushi-ui/components/card";
+} from '~/app/_common/lib/declarations/decgov_backend.did'
+import { Button } from '~/sushi-ui'
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+} from '~/sushi-ui/components/card'
 
 export function Proposals({
 	space,
 	proposals,
 }: {
-	space: Space;
-	proposals: Proposal[];
+	space: Space
+	proposals: Proposal[]
 }) {
 	return (
 		<div className="space-y-8">
@@ -29,16 +34,19 @@ export function Proposals({
 						>
 							<Card>
 								<CardHeader>
-									<h2 className="text-lg">{proposal.title}</h2>
+									<h2 className="text-2xl font-semibold">{proposal.title}</h2>
 								</CardHeader>
 								<CardContent>
 									<p>{proposal.description}</p>
 								</CardContent>
+								<CardFooter>
+									<div className="text-sm text-gray-300">Ends in X days</div>
+								</CardFooter>
 							</Card>
 						</Link>
 					</div>
 				))}
 			</div>
 		</div>
-	);
+	)
 }

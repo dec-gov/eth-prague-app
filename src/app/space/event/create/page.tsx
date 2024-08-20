@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { useMutation } from "@tanstack/react-query";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
-import { Event, EventType } from "~/app/_common/types/events";
+import { useMutation } from '@tanstack/react-query'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useCallback, useState } from 'react'
+import { Event, EventType } from '~/app/_common/types/events'
 import {
 	Button,
 	Select,
@@ -12,28 +12,28 @@ import {
 	SelectTrigger,
 	SelectValue,
 	TextField,
-} from "~/sushi-ui";
+} from '~/sushi-ui'
 
-type NewEvent = Pick<Event, "webhookUrl" | "payload" | "eventType"> & {
-	spaceId: number;
-};
+type NewEvent = Pick<Event, 'webhookUrl' | 'payload' | 'eventType'> & {
+	spaceId: number
+}
 
 export default function CreateEvent() {
-	const [webhookUrl, setWebhookUrl] = useState("");
-	const [payload, setPayload] = useState("");
-	const [eventType, setEventType] = useState(EventType.ON_PROPOSAL_CREATED);
+	const [webhookUrl, setWebhookUrl] = useState('')
+	const [payload, setPayload] = useState('')
+	const [eventType, setEventType] = useState(EventType.ON_PROPOSAL_CREATED)
 
-	const params = useSearchParams();
-	const router = useRouter();
+	const params = useSearchParams()
+	const router = useRouter()
 
 	const { mutate } = useMutation<void, Error, NewEvent>({
-		mutationKey: ["createEvent"],
+		mutationKey: ['createEvent'],
 		mutationFn: async ({ webhookUrl, payload, eventType, spaceId }) => {
-			const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/event";
+			const url = process.env.NEXT_PUBLIC_BACKEND_API + '/api/event'
 
 			await fetch(url, {
-				method: "POST",
-				mode: "cors",
+				method: 'POST',
+				mode: 'cors',
 				body: JSON.stringify({
 					webhookUrl,
 					payload,
@@ -41,23 +41,23 @@ export default function CreateEvent() {
 					spaceId,
 				}),
 				headers: {
-					"Content-Type": "application/json",
+					'Content-Type': 'application/json',
 				},
-			});
+			})
 		},
 		onSuccess: () => {
-			router.push(`/space?spaceId=${params.get("spaceId")}`);
+			router.push(`/space?spaceId=${params.get('spaceId')}`)
 		},
-	});
+	})
 
 	const createProposal = useCallback(() => {
 		mutate({
 			webhookUrl,
 			payload,
 			eventType,
-			spaceId: Number(params.get("spaceId")),
-		});
-	}, [payload, eventType, mutate, params, webhookUrl]);
+			spaceId: Number(params.get('spaceId')),
+		})
+	}, [payload, eventType, mutate, params, webhookUrl])
 
 	return (
 		<div className="w-full flex justify-center">
@@ -116,5 +116,5 @@ export default function CreateEvent() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
