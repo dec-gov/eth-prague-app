@@ -1,24 +1,34 @@
+'use client'
+
 import { Card, CardContent, CardHeader } from '~/sushi-ui/components/card'
 import { useMemo } from 'react'
-import {
-	ProposalOption,
-	ProposalOptionVote,
-} from '~/app/_common/lib/declarations/decgov_backend.did'
+import { useOptionsByProposal } from '~/app/_common/lib/hooks/backend/use-options-by-proposal'
+import { useVotesByProposal } from '~/app/_common/lib/hooks/backend/use-votes-by-proposal'
 
 interface ResultsProps {
-	options: ProposalOption[]
-	optionVotes: ProposalOptionVote[]
+	spaceId: number
+	proposalId: number
 }
 
-export function Results({ options, optionVotes }: ResultsProps) {
+export function Results({ spaceId, proposalId }: ResultsProps) {
+	const { data: options, isLoading: isOptionsLoading } = useOptionsByProposal({
+		spaceId,
+		proposalId,
+	})
+
+	const { data: votes, isLoading: isVotesLoading } = useVotesByProposal({
+		spaceId,
+		proposalId,
+	})
+
 	const totalPower = useMemo(
-		() => optionVotes.reduce((acc, vote) => acc + vote.voting_power, 0n),
-		[optionVotes],
+		() => votes?.reduce((acc, vote) => acc + vote.voting_power, 0n),
+		[votes],
 	)
 
 	const optionsWithVotes = useMemo(() => {
-		return options.map((option) => {
-			const optionPower = optionVotes.reduce((acc, vote) => {
+		return options?.map((option) => {
+			const optionPower = votes?.reduce((acc, vote) => {
 				if (vote.option_id === option.id) {
 					return acc + vote.voting_power
 				}
@@ -37,7 +47,11 @@ export function Results({ options, optionVotes }: ResultsProps) {
 				percentage,
 			}
 		})
-	}, [optionVotes, options, totalPower])
+	}, [votes, options, totalPower])
+
+	if (isOptionsLoading || isVotesLoading) return <div>Loading...</div>
+
+	if (!optionsWithVotes) return null
 
 	return (
 		<Card className="h-fit w-full">

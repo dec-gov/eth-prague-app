@@ -142,16 +142,16 @@ function EvmVote({
 					</List.KeyValue>
 				</List.Control>
 			</List>
-			<Button fullWidth variant="outline" onClick={sign}>
+			<Button fullWidth variant="outline" onClick={sign} disabled={!power}>
 				Vote
 			</Button>
 		</div>
 	)
 }
 
-function BtcVote() {
-	return <div>-</div>
-}
+// function BtcVote() {
+// 	return <div>-</div>
+// }
 
 export function VoteModal({
 	space,
@@ -169,7 +169,7 @@ export function VoteModal({
 				<DialogHeader>
 					<DialogTitle>Vote</DialogTitle>
 				</DialogHeader>
-				<div className="pt-4 space-y-2">
+				<div className="pt-4 space-y-4">
 					<List>
 						<List.Control>
 							<List.KeyValue flex title="Proposal">
@@ -189,16 +189,20 @@ export function VoteModal({
 							<TabsTrigger className="flex flex-1" value={ChainType.EVM}>
 								EVM
 							</TabsTrigger>
-							<TabsTrigger className="flex flex-1" value={ChainType.BTC}>
+							<TabsTrigger
+								className="flex flex-1"
+								value={ChainType.BTC}
+								disabled
+							>
 								BTC
 							</TabsTrigger>
 						</TabsList>
-						<TabsContent className="!mt-0" value={ChainType.EVM}>
+						<TabsContent value={ChainType.EVM}>
 							<EvmVote space={space} proposal={proposal} option={option} />
 						</TabsContent>
-						<TabsContent value={ChainType.BTC}>
+						{/* <TabsContent value={ChainType.BTC}>
 							<BtcVote />
-						</TabsContent>
+						</TabsContent> */}
 					</Tabs>
 				</div>
 			</DialogContent>

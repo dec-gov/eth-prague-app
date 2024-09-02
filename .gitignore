@@ -20,3 +20,5 @@ out/
 
 backend/db/target/
 .env
+
+tsconfig.tsbuildinfo

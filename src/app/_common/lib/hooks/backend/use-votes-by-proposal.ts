@@ -45,11 +45,13 @@ export function useVotesByProposal({
 
 	return {
 		data: useMemo(() => {
-			const votesByOption = queries
-				.flatMap((query) => query.data)
-				.filter((data): data is NonNullable<typeof data> => !!data)
+			const votesByOption = queries.flatMap((query) => query.data)
 
-			return votesByOption
+			if (votesByOption.some((vote) => vote === undefined)) {
+				return undefined
+			}
+
+			return votesByOption as NonNullable<(typeof votesByOption)[number]>[]
 		}, [queries]),
 		isLoading: queries.some((query) => query.isLoading),
 		isError: queries.some((query) => query.isError),

@@ -16,26 +16,42 @@ export function Sidebar<T extends Readonly<string[]>>({
 	tabs,
 }: SidebarProps<T>) {
 	return (
-		<Card className="h-fit">
-			<CardHeader>
-				<h2 className="text-lg">{space.name}</h2>
-			</CardHeader>
-			<CardContent>
-				<div className="space-y-4">
-					{tabs.map((tab) => (
-						<div
-							key={tab}
-							onClick={() => setTab(tab)}
-							className={classNames(
-								tab === currentTab && 'font-semibold !text-slate-200',
-								'cursor-pointer text-slate-400 hover:text-slate-100',
-							)}
-						>
-							{tab}
+		<div className="space-y-4">
+			<Card>
+				<CardHeader>
+					<div className="flex flex-row items-center w-full justify-between flex-wrap gap-4">
+						<h2 className="text-lg select-none font-semibold break-before-all">
+							{space.name}
+						</h2>
+						<div className="flex-grow flex justify-end">
+							<img
+								alt={space.name}
+								src={space.icon_link}
+								width={32}
+								height={32}
+							/>
 						</div>
-					))}
-				</div>
-			</CardContent>
-		</Card>
+					</div>
+				</CardHeader>
+			</Card>
+			<Card>
+				<CardContent>
+					<div className="space-y-4 pt-5">
+						{tabs.map((tab) => (
+							<div
+								key={tab}
+								onClick={() => setTab(tab)}
+								className={classNames(
+									tab === currentTab && 'font-semibold !text-slate-200',
+									'cursor-pointer text-slate-400 hover:text-slate-100 select-none',
+								)}
+							>
+								{tab}
+							</div>
+						))}
+					</div>
+				</CardContent>
+			</Card>
+		</div>
 	)
 }

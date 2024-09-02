@@ -6,6 +6,7 @@ export type NewSpace = Pick<
 	| 'icon_link'
 	| 'min_vote_power'
 	| 'website_link'
+	| 'owner_address'
 	| 'vote_delay'
 	| 'vote_duration'
 > & {

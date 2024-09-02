@@ -2,21 +2,31 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
-import { useProposalsBySpace } from '~/app/_common/lib/hooks/backend/use-proposals-by-space'
 import { useSpace } from '~/app/_common/lib/hooks/backend/use-space'
-import { useStrategiesBySpace } from '~/app/_common/lib/hooks/backend/use-strategies-by-space'
 import { Sidebar } from './_common/ui/sidebar'
 import { Events } from './_common/ui/tabs/events'
 import { Proposals } from './_common/ui/tabs/proposals'
 import { Strategies } from './_common/ui/tabs/strategies'
-import { useIsMounted } from '../_common/lib/hooks/useIsMounted'
 import { Container } from '~/sushi-ui'
 
 const tabs = ['Proposals', 'Strategies', 'Events'] as const
 
+function Tab({
+	tab,
+	spaceId,
+}: { tab: (typeof tabs)[number]; spaceId: number }) {
+	switch (tab) {
+		case 'Proposals':
+			return <Proposals spaceId={spaceId} />
+		case 'Strategies':
+			return <Strategies spaceId={spaceId} />
+		case 'Events':
+			return <Events spaceId={spaceId} />
+	}
+}
+
 export default function SpacePage() {
 	const [currentTab, setTab] = useState<(typeof tabs)[number]>(tabs[0])
-	const isMounted = useIsMounted()
 
 	const params = useSearchParams()
 	const spaceId = params.get('spaceId')
@@ -26,17 +36,10 @@ export default function SpacePage() {
 	const { data: space, isLoading: isSpaceLoading } = useSpace({
 		spaceId,
 	})
-	const { data: proposals, isLoading: isProposalsLoading } =
-		useProposalsBySpace({ spaceId })
-	const { data: strategies, isLoading: isStrategiesLoading } =
-		useStrategiesBySpace({ spaceId })
 
-	if (!isMounted || isSpaceLoading || isProposalsLoading || isStrategiesLoading)
-		return <div>Loading...</div>
+	if (isSpaceLoading) return <div>Loading...</div>
 
-	if (!space) return <div>Space not found</div>
-	if (!proposals) return <div>Proposals not found</div>
-	if (!strategies) return <div>Strategies not found</div>
+	if (!space || spaceId === undefined) return <div>Space not found</div>
 
 	return (
 		<Container maxWidth="4xl">
@@ -49,13 +52,7 @@ export default function SpacePage() {
 				/>
 				<div className="col-span-3">
 					<div />
-					{currentTab === 'Proposals' ? (
-						<Proposals space={space} proposals={proposals} />
-					) : null}
-					{currentTab === 'Strategies' ? (
-						<Strategies strategies={strategies} />
-					) : null}
-					{currentTab === 'Events' ? <Events space={space} /> : null}
+					<Tab tab={currentTab} spaceId={spaceId} />
 				</div>
 			</div>
 		</Container>

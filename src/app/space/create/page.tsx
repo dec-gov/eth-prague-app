@@ -10,6 +10,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { NewSpace } from './_common/form/space-form'
 import { CreateSpaceBasic } from './_common/ui/create-space-basic'
 import { CreateSpaceVoteSettings } from './_common/ui/create-space-vote-settings'
+import { CreateSpaceAdministration } from './_common/ui/create-space-administration'
 
 export default function CreateSpace() {
 	const form = useForm<NewSpace>({
@@ -24,6 +25,7 @@ export default function CreateSpace() {
 			name,
 			icon_link,
 			website_link,
+			owner_address,
 			vote_delay,
 			vote_duration,
 			min_vote_power,
@@ -33,6 +35,7 @@ export default function CreateSpace() {
 				name,
 				icon_link,
 				website_link,
+				owner_address,
 				vote_delay,
 				vote_duration,
 				0,
@@ -52,6 +55,7 @@ export default function CreateSpace() {
 		name,
 		icon_link,
 		website_link,
+		owner_address,
 		vote_delay,
 		vote_duration,
 		min_vote_power,
@@ -63,6 +67,7 @@ export default function CreateSpace() {
 			name,
 			icon_link,
 			website_link,
+			owner_address,
 			vote_delay,
 			vote_duration,
 			min_vote_power,
@@ -83,6 +88,7 @@ export default function CreateSpace() {
 		vote_delay,
 		vote_duration,
 		website_link,
+		owner_address,
 	])
 
 	return (
@@ -92,6 +98,7 @@ export default function CreateSpace() {
 					<h1 className="text-2xl font-semibold">Create Space</h1>
 					<div>
 						<CreateSpaceBasic />
+						<CreateSpaceAdministration />
 						<CreateSpaceVoteSettings />
 					</div>
 					<div className="flex w-full justify-end gap-4">

@@ -1,8 +1,12 @@
+'use client'
+
 import { ColumnDef } from '@tanstack/react-table'
 import { Card } from '~/sushi-ui'
 import { DataTable } from '~/sushi-ui/components/data-table/index'
 import numeral from 'numbro'
 import { ProposalOptionVote } from '~/app/_common/lib/declarations/decgov_backend.did'
+import { useVotesByProposal } from '~/app/_common/lib/hooks/backend/use-votes-by-proposal'
+import { useMemo } from 'react'
 
 const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
 	{
@@ -23,10 +27,23 @@ const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
 	},
 ]
 
-export function Votes({ optionVotes }: { optionVotes: ProposalOptionVote[] }) {
-	const sorted = optionVotes.sort((a, b) =>
-		a.voting_power > b.voting_power ? -1 : 1,
+export function Votes({
+	spaceId,
+	proposalId,
+}: { spaceId: number; proposalId: number }) {
+	const { data: votes, isLoading: isVotesLoading } = useVotesByProposal({
+		spaceId,
+		proposalId,
+	})
+
+	const sorted = useMemo(
+		() => votes?.sort((a, b) => (a.voting_power > b.voting_power ? -1 : 1)),
+		[votes],
 	)
+
+	if (isVotesLoading) return <div>Loading...</div>
+
+	if (!sorted) return null
 
 	return (
 		<div className="space-y-4">
