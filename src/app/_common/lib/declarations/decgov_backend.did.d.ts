@@ -143,10 +143,6 @@ export interface _SERVICE {
 		[string, string, string, string, number, number, number, bigint, bigint],
 		Space
 	>
-	insert_vote: ActorMethod<
-		[number, number, number, string, number, bigint, string, bigint],
-		[] | [ProposalOption]
-	>
 	update_evm_strategy: ActorMethod<
 		[number, number, string, string, EvmStrategy],
 		[] | [Strategy]

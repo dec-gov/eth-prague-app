@@ -188,20 +188,6 @@ export const idlFactory = ({ IDL }) => {
 			[Space],
 			[],
 		),
-		insert_vote: IDL.Func(
-			[
-				IDL.Nat32,
-				IDL.Nat32,
-				IDL.Nat32,
-				IDL.Text,
-				IDL.Nat32,
-				IDL.Nat64,
-				IDL.Text,
-				IDL.Nat,
-			],
-			[IDL.Opt(ProposalOption)],
-			[],
-		),
 		update_evm_strategy: IDL.Func(
 			[IDL.Nat32, IDL.Nat32, IDL.Text, IDL.Text, EvmStrategy],
 			[IDL.Opt(Strategy)],

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Address } from 'viem'
+import { decgov_backend } from '../../declarations'
 
 interface UseVotingPower {
 	voter: Address | undefined
@@ -8,29 +9,28 @@ interface UseVotingPower {
 }
 
 export function useVotingPower({
-	blockNumber,
 	spaceId,
+	blockNumber,
 	voter,
 }: UseVotingPower) {
 	return useQuery({
 		queryKey: ['voting-power', voter, spaceId, blockNumber],
 		queryFn: async () => {
-			// let url = process.env.NEXT_PUBLIC_BACKEND_API
+			if (typeof voter !== 'string' || typeof spaceId !== 'number') {
+				throw new Error('Invalid voter or spaceId')
+			}
 
-			// if (!url) throw new Error("Backend API URL is not defined")
+			const data = await decgov_backend.voting_power(
+				voter,
+				spaceId,
+				blockNumber ? [String(blockNumber)] : [],
+			)
 
-			// if (blockNumber) {
-			//   url += `/api/power?address=${voter}&spaceId=${spaceId}&blockNumber=${blockNumber}`
-			// } else {
-			//   url += `/api/power?address=${voter}&spaceId=${spaceId}`
-			// }
+			if (!('Ok' in data)) {
+				throw new Error('Fetch voting power failed')
+			}
 
-			// const res: { votingPower: string } = await fetch(url).then(res =>
-			//   res.json()
-			// )
-
-			// return BigInt(res.votingPower)
-			return BigInt(0)
+			return data.Ok
 		},
 		enabled: typeof voter === 'string' && typeof spaceId === 'number',
 	})

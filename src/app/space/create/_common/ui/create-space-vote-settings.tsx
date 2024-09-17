@@ -51,7 +51,7 @@ function VoteDelay() {
 						<div className="col-span-3">
 							<TextField
 								type="number"
-								value={value || ''}
+								value={value === undefined ? '' : value}
 								onValueChange={(value) => setValue(Number(value))}
 								placeholder="1"
 							/>
@@ -105,7 +105,7 @@ function VoteDuration() {
 						<div className="col-span-3">
 							<TextField
 								type="number"
-								value={value || ''}
+								value={value === undefined ? '' : value}
 								onValueChange={(value) => setValue(Number(value))}
 								placeholder="3"
 							/>
@@ -160,7 +160,7 @@ function ScaleForm({ name, title }: ScaleForm) {
 						<div className="col-span-3">
 							<TextField
 								type="number"
-								value={value}
+								value={value === undefined ? '' : value}
 								onValueChange={(value) => {
 									if (value.includes('.') || value.includes(',')) {
 										return

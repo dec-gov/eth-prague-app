@@ -14,7 +14,12 @@ import { CreateSpaceAdministration } from './_common/ui/create-space-administrat
 
 export default function CreateSpace() {
 	const form = useForm<NewSpace>({
-		defaultValues: {},
+		defaultValues: {
+			name: '',
+			website_link: '',
+			icon_link: '',
+			owner_address: '',
+		},
 	})
 
 	const router = useRouter()

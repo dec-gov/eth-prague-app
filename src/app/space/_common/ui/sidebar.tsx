@@ -19,19 +19,21 @@ export function Sidebar<T extends Readonly<string[]>>({
 		<div className="space-y-4">
 			<Card>
 				<CardHeader>
-					<div className="flex flex-row items-center w-full justify-between flex-wrap gap-4">
-						<h2 className="text-lg select-none font-semibold break-before-all">
-							{space.name}
-						</h2>
-						<div className="flex-grow flex justify-end">
-							<img
-								alt={space.name}
-								src={space.icon_link}
-								width={32}
-								height={32}
-							/>
+					<a href={space.website_link} target="_blank" rel="noreferrer">
+						<div className="flex flex-row items-center w-full justify-between flex-wrap gap-4">
+							<h2 className="text-lg select-none font-semibold break-before-all">
+								{space.name}
+							</h2>
+							<div className="flex-grow flex justify-end">
+								<img
+									alt={space.name}
+									src={space.icon_link}
+									width={32}
+									height={32}
+								/>
+							</div>
 						</div>
-					</div>
+					</a>
 				</CardHeader>
 			</Card>
 			<Card>
