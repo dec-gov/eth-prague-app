@@ -1,18 +1,27 @@
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
-import { Card } from '~/sushi-ui'
+import { Card, HoverCard, HoverCardContent, HoverCardTrigger } from '~/sushi-ui'
 import { DataTable } from '~/sushi-ui/components/data-table/index'
-import numeral from 'numbro'
 import { ProposalOptionVote } from '~/app/_common/lib/declarations/decgov_backend.did'
 import { useVotesByProposal } from '~/app/_common/lib/hooks/backend/use-votes-by-proposal'
 import { useMemo } from 'react'
+import { VotingPower } from './voting-power'
 
 const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
 	{
 		id: 'voter',
 		header: 'Voter',
-		cell: ({ row }) => row.original.user_address,
+		cell: ({ row }) => (
+			<HoverCard openDelay={100} closeDelay={0}>
+				<HoverCardTrigger>
+					shortenAddress(row.original.user_address)
+				</HoverCardTrigger>
+				<HoverCardContent>
+					<div>{row.original.user_address}</div>
+				</HoverCardContent>
+			</HoverCard>
+		),
 	},
 	{
 		id: 'option',
@@ -22,8 +31,7 @@ const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
 	{
 		id: 'power',
 		header: 'Voting Power',
-		cell: ({ row }) =>
-			numeral(Number(row.original.voting_power)).format('0.00a'),
+		cell: ({ row }) => <VotingPower power={row.original.voting_power} />,
 	},
 ]
 
