@@ -7,6 +7,7 @@ import { ProposalOptionVote } from '~/app/_common/lib/declarations/decgov_backen
 import { useVotesByProposal } from '~/app/_common/lib/hooks/backend/use-votes-by-proposal'
 import { useMemo } from 'react'
 import { VotingPower } from './voting-power'
+import { shortenAddress } from '~/app/_common/lib/shorten-address'
 
 const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
 	{
@@ -15,7 +16,7 @@ const COLUMNS: ColumnDef<ProposalOptionVote, unknown>[] = [
 		cell: ({ row }) => (
 			<HoverCard openDelay={100} closeDelay={0}>
 				<HoverCardTrigger>
-					shortenAddress(row.original.user_address)
+					{shortenAddress(row.original.user_address)}
 				</HoverCardTrigger>
 				<HoverCardContent>
 					<div>{row.original.user_address}</div>
