@@ -4,6 +4,7 @@ import numbro from 'numbro'
 import React, { useCallback, useState } from 'react'
 import { Address } from 'viem'
 import { useAccount, useSignMessage } from 'wagmi'
+import { decgov_backend } from '~/app/_common/lib/declarations'
 import {
 	Proposal,
 	ProposalOption,
@@ -97,28 +98,25 @@ function EvmVote({
 		voter: address,
 	})
 
-	const { mutate } = useMutation<void, Error, EvmVote>({
+	const { mutate } = useMutation<bigint, Error, EvmVote>({
 		mutationKey: [space.id, proposal.id, option.name, 'vote'],
 		mutationFn: async (params) => {
-			const url = `${process.env.NEXT_PUBLIC_BACKEND_API}/api/vote`
-
-			await fetch(url, {
-				method: 'POST',
-				mode: 'cors',
-				body: JSON.stringify({
-					message: {
-						spaceId: params.spaceId,
-						optionId: params.optionId,
-						address: params.address,
-					},
-					signature: params.signature,
-				}),
-				headers: {
-					'Content-Type': 'application/json',
+			const result = await decgov_backend.vote({
+				message: {
+					address: params.address,
+					space_id: params.spaceId,
+					option_id: params.optionId,
+					proposal_id: proposal.id,
+					block_height: [],
 				},
+				signature: params.signature,
 			})
 
-			return
+			if ('Ok' in result) {
+				return result.Ok
+			}
+
+			throw new Error('Failed to vote')
 		},
 		onSuccess: () => {
 			refetchQueries({
