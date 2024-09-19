@@ -84,7 +84,6 @@ export const idlFactory = ({ IDL }) => {
 		option_id: IDL.Nat32,
 		address: IDL.Text,
 		proposal_id: IDL.Nat32,
-		block_height: IDL.Opt(IDL.Text),
 		space_id: IDL.Nat32,
 	})
 	const VoteData = IDL.Record({

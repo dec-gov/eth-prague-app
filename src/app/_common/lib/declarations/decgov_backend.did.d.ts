@@ -84,7 +84,6 @@ export interface VoteMessage {
 	option_id: number
 	address: string
 	proposal_id: number
-	block_height: [] | [string]
 	space_id: number
 }
 export interface WebhookEvent {
